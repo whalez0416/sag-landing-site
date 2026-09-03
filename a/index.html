@@ -115,7 +115,10 @@ h2{margin:0;font-size:clamp(40px,4.2vw,60px);line-height:1.15;font-weight:300;le
 .pc:hover{transform:translateY(-8px);box-shadow:inset 0 0 0 2px var(--acc),0 26px 55px rgba(0,0,0,.4)}
 .price:hover .pc.std:not(:hover){box-shadow:none;transform:none}
 .pc .nm{font-size:15px;color:var(--mute);transition:color .3s}.pc.std .nm,.pc:hover .nm{color:var(--acc2)}.price:hover .pc.std:not(:hover) .nm{color:var(--mute)}
-.pc .pr{font-size:44px;font-weight:800;letter-spacing:-.02em}.pc .pr span{font-size:20px;font-weight:400}
+.pc .pr{font-size:44px;font-weight:800;letter-spacing:-.02em}
+.pcbtn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;height:50px;border-radius:12px;background:transparent;border:1.5px solid var(--acc);color:var(--acc);font-weight:700;font-size:15px;text-decoration:none;transition:background .25s,color .25s}
+.pcbtn:hover,.pcbtn.std{background:var(--acc);color:#fff}
+.pcbtn.std:hover{background:var(--acc2)}.pc .pr span{font-size:20px;font-weight:400}
 .pc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:400;color:#c9c9d2}.pc.std ul{color:#e6e6ee}
 /* 진단 */
 .diag{padding:130px 0 140px;border-top:1px solid var(--line);overflow:hidden}
@@ -142,11 +145,11 @@ body.light .dform input{background:rgba(0,0,0,.04);color:#17171c}
 /* dark act variety */
 #three,#six{background:#0e0e15}
 /* light-act section separation */
-body.light #answer{background:#efeef4}
-body.light #road{background:#fff}
-body.light #about{background:#efeef4}
+body.light #answer{background:#f4f3f7}
+body.light #road{background:#fff}body.light .road .dot{box-shadow:0 0 0 7px #fff}
+body.light #about{background:#f4f3f7}
 body.light #partners{background:#fff}
-body.light #price{background:#efeef4}
+body.light #price{background:#f4f3f7}
 body.light .diag{background:#fff}
 body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 .cnt{font-variant-numeric:tabular-nums}
@@ -272,14 +275,14 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 <section class="sec" id="price"><div class="wrap">
   <div class="head"><h2 data-split>여섯 가지를 하나로</h2><p class="lede" data-reveal>모든 구성은 최소 6개월 계약 기준. VAT 별도, 초기 세팅비 없음.</p></div>
   <div class="price" data-stagger>
-    <div class="pc"><div class="nm">베이직</div><div class="pr">월 300<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 8건</li><li>MIK 칼럼 월 2편</li><li>유튜브 자막 월 4편</li><li>구글 리뷰 관리</li></ul></div>
-    <div class="pc std"><div class="nm">스탠다드 · 추천</div><div class="pr">월 500<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 20건</li><li>MIK 칼럼 월 4편</li><li>주요 매체 기사 월 1건</li><li>유튜브 자막 월 8편</li><li>구글 리뷰 관리</li></ul><a class="link" href="#diag" style="align-self:flex-start">무료 AI 추천 진단 →</a></div>
-    <div class="pc"><div class="nm">프리미엄</div><div class="pr">월 800<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 40건 + 원장 인물 문서</li><li>MIK 칼럼 월 8편</li><li>주요 매체 기사 월 3건</li><li>유튜브 자막 전 영상</li><li>구글 리뷰 관리 + 외국어 응대</li></ul></div>
+    <div class="pc"><div class="nm">베이직</div><div class="pr">월 300<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 8건</li><li>MIK 칼럼 월 2편</li><li>유튜브 자막 월 4편</li><li>구글 리뷰 관리</li></ul><a class="pcbtn" href="#diag">이 가격으로 상담하기</a></div>
+    <div class="pc std"><div class="nm">스탠다드 · 추천</div><div class="pr">월 500<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 20건</li><li>MIK 칼럼 월 4편</li><li>주요 매체 기사 월 1건</li><li>유튜브 자막 월 8편</li><li>구글 리뷰 관리</li></ul><a class="pcbtn std" href="#diag">이 가격으로 상담하기</a></div>
+    <div class="pc"><div class="nm">프리미엄</div><div class="pr">월 800<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 40건 + 원장 인물 문서</li><li>MIK 칼럼 월 8편</li><li>주요 매체 기사 월 3건</li><li>유튜브 자막 전 영상</li><li>구글 리뷰 관리 + 외국어 응대</li></ul><a class="pcbtn" href="#diag">이 가격으로 상담하기</a></div>
   </div>
 </div></section>
 
 <section class="diag" id="diag"><div class="wrap grid">
-  <div><h2 data-split>귀 병원을<br>지금 대조해 드립니다</h2><p class="lede" style="margin-top:28px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과를 한 장 리포트로 보내드립니다.</p></div>
+  <div><h2 data-split>지금 귀 병원은,<br>AI 답변에 있습니까?</h2><p class="lede" style="margin-top:28px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과를 한 장 리포트로 보내드립니다.</p></div>
   <form class="dform" id="dform" data-reveal>
     <label>병원명<input name="name" required placeholder="OOO 병원"></label>
     <label>지역<input name="area" required placeholder="서울 강북구"></label>

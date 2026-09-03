@@ -14,9 +14,9 @@
 body{background:var(--bg);color:var(--fg);overflow-x:hidden}
 #orb{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .orbit{position:fixed;left:50%;top:50%;width:0;height:0;z-index:1;pointer-events:none;opacity:0}
-.orbit .d{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.8)}
-.orbit .d.on{width:14px;height:14px;left:-7px;top:-7px;background:#ff8a5b;box-shadow:0 0 16px rgba(255,138,91,.9)}
-.orbit .l{position:absolute;left:12px;top:-8px;font-size:12px;color:#cfc8da;white-space:nowrap}
+.orbit .d{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 12px rgba(255,138,91,.9)}
+.orbit .d.on{width:11px;height:11px;left:-5px;top:-5px;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.95)}
+.orbit .l{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:600;color:#f2eef8;white-space:nowrap;padding:6px 13px;border-radius:999px;background:rgba(17,12,24,.72);border:1px solid rgba(255,255,255,.18);box-shadow:0 6px 18px rgba(0,0,0,.35)}
 main{position:relative;z-index:2}
 .nav{position:fixed;top:0;left:0;right:0;height:60px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:14px;backdrop-filter:blur(14px);background:rgba(11,8,16,.5);border-bottom:1px solid rgba(255,255,255,.06)}
 .nav .brand{font-weight:600;letter-spacing:.02em;text-decoration:none}.nav .brand span{font-weight:400;color:var(--dim);margin-left:10px}
@@ -161,6 +161,19 @@ body.light #answer,body.light #about,body.light #price{background:#f5f4f8}
 body.light #road,body.light #about2{background:#eceaf2}
 body.light #diag{background:#eceaf2}
 body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
+/* bottom channel marquee */
+.cmarquee{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.cmtrack{display:inline-flex;align-items:center;white-space:nowrap;animation:cmarq 26s linear infinite;will-change:transform}
+.cmtrack span{font-size:clamp(26px,3.4vw,46px);font-weight:800;letter-spacing:-.02em;color:#f2eef8}
+.cmtrack span::after{content:"·";margin:0 26px;color:var(--acc);opacity:.7;font-weight:700;vertical-align:middle}
+@keyframes cmarq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.cmtrack{animation:none}}
+/* pricing per-card CTA */
+.price .pcbtn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;height:50px;border-radius:12px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid var(--acc);color:var(--acc2);background:transparent;transition:background .25s ease,color .25s ease}
+.price .pcbtn:hover{background:var(--acc);color:#fff}
+.pc.std .pcbtn{background:var(--acc);color:#fff;border-color:var(--acc)}
+body.light .price .pcbtn{color:#c2410c;border-color:rgba(255,90,60,.6)}
+body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);color:#fff}
 </style>
 </head>
 <body>
@@ -195,7 +208,7 @@ body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
 
 <section class="os r" data-orb="0.36,0,0.26,3,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>두 · 세 번째 면 · 사실 · 전문가</div>
-  <h2 data-split>광고는 잊히고,<br>사실만 인용됩니다</h2>
+  <h2 data-split>환자는 광고가 아닌<br>진실을 찾습니다</h2>
   <p class="lede" data-reveal>사전처럼 정리된 문서는 사실로 읽히고, 원장님 이름으로 실린 칼럼은 전문가의 서명이 됩니다. 환자가 마지막에 검색하는 것은 병원 이름이 아니라 원장님 이름입니다.</p>
   <div class="dots" data-reveal><div><b>병원 지식 문서 구축</b><span>환자의 질문 하나에 문서 하나, 매월 20건</span></div><div><b>Medical Insights Korea 정기 칼럼</b><span>원장님 이름의 정기 칼럼</span></div></div>
   <div class="nums" data-reveal><div><div class="n cnt" data-to="49" data-suf="배">0</div><small>AI가 읽어간 횟수 · 두 달</small></div><div><div class="n cnt" data-to="16" data-suf="배">0</div><small>AI 답변 거쳐 온 방문</small></div></div>
@@ -203,14 +216,14 @@ body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
 
 <section class="os l" data-orb="-0.36,0,0.26,6,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>네 · 다섯 · 여섯 번째 면 · 권위 · 현장 · 평판</div>
-  <h2 data-split>한 번의 노출보다,<br>매일 쌓이는 근거</h2>
+  <h2 data-split>한 번의 노출이 아닌,<br>지속가능한 병원 성장</h2>
   <p class="lede" data-reveal>기사 한 편은 하루 노출이지만 서로 인용된 기사는 AI 답변에 남습니다. AI는 영상을 보지 못하고 자막만 읽습니다. 별점보다 먼저 보는 것은 병원이 답했는가입니다.</p>
   <div class="dots" data-reveal><div><b>주요 언론 매체 정기 배포</b><span>상위 건강·의료 매체 정기 배포</span></div><div><b>유튜브 자막 최적화</b><span>모든 영상에 직접 자막</span></div><div><b>구글 리뷰 관리</b><span>리뷰 확보와 병원 이름의 응답</span></div></div>
 </div></div></section>
 
 <section class="rip" data-orb="0,0.12,0.24,6,1" data-ripple="1"><div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:30px">
-  <h2 data-split>여섯 면이 모두 켜질 때,<br>비로소 퍼집니다</h2>
-  <div class="chips" data-stagger><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span></div>
+  <h2 data-split>육각형이 완성될 때,<br>비로소 알려집니다</h2>
+  <div class="cmarquee" data-reveal><div class="cmtrack"><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span></div></div>
 </div></section>
 
 <section class="sec" id="answer" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
@@ -256,9 +269,9 @@ body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
 <section class="sec" id="price" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
   <div class="head"><h2 data-split>여섯 가지를 하나로</h2><p class="lede" data-reveal>모든 구성은 최소 6개월 계약 기준. VAT 별도, 초기 세팅비 없음.</p></div>
   <div class="price" data-stagger>
-    <div class="pc"><div class="nm">베이직</div><div class="pr">월 300<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 8건</li><li>MIK 칼럼 월 2편</li><li>유튜브 자막 월 4편</li><li>구글 리뷰 관리</li></ul></div>
-    <div class="pc std"><div class="nm">스탠다드 · 추천</div><div class="pr">월 500<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 20건</li><li>MIK 칼럼 월 4편</li><li>주요 매체 기사 월 1건</li><li>유튜브 자막 월 8편</li><li>구글 리뷰 관리</li></ul><a class="btn" href="#diag" style="height:52px;font-size:15px;align-self:flex-start">무료 AI 추천 진단 <span>→</span></a></div>
-    <div class="pc"><div class="nm">프리미엄</div><div class="pr">월 800<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 40건 + 원장 인물 문서</li><li>MIK 칼럼 월 8편</li><li>주요 매체 기사 월 3건</li><li>유튜브 자막 전 영상</li><li>구글 리뷰 관리 + 외국어 응대</li></ul></div>
+    <div class="pc"><div class="nm">베이직</div><div class="pr">월 300<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 8건</li><li>MIK 칼럼 월 2편</li><li>유튜브 자막 월 4편</li><li>구글 리뷰 관리</li></ul><a class="pcbtn" href="#diag">이 가격으로 상담하기</a></div>
+    <div class="pc std"><div class="nm">스탠다드 · 추천</div><div class="pr">월 500<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 20건</li><li>MIK 칼럼 월 4편</li><li>주요 매체 기사 월 1건</li><li>유튜브 자막 월 8편</li><li>구글 리뷰 관리</li></ul><a class="pcbtn" href="#diag">이 가격으로 상담하기</a></div>
+    <div class="pc"><div class="nm">프리미엄</div><div class="pr">월 800<span>만원</span></div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 40건 + 원장 인물 문서</li><li>MIK 칼럼 월 8편</li><li>주요 매체 기사 월 3건</li><li>유튜브 자막 전 영상</li><li>구글 리뷰 관리 + 외국어 응대</li></ul><a class="pcbtn" href="#diag">이 가격으로 상담하기</a></div>
   </div>
 </div></section>
 
@@ -285,14 +298,14 @@ body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
 <script>
 (function(){
 SAG.init();
-ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');},onLeaveBack:function(){document.body.classList.remove('light');}});
+ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');st.paused=true;},onLeaveBack:function(){document.body.classList.remove('light');st.paused=false;}});
 var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
 /* orbit dots */
 var orbit=document.getElementById('orbit'); var labels=['검색','AI','홈페이지','기사','영상','리뷰','지도'];
 for(var j=0;j<7;j++){ var d=document.createElement('div'); d.className='d'+(j===1?' on':''); d.innerHTML='<span class="l">'+labels[j]+'</span>'; orbit.appendChild(d); }
-var ang=0; function orbitLoop(){ ang+=0.0035; var h=innerHeight, cx=innerWidth/2+st.x*h, cy=h/2-st.y*h, R=st.r*h*1.2; orbit.style.left=cx+'px'; orbit.style.top=cy+'px';
+var ang=0; function orbitLoop(){ if(st.paused){requestAnimationFrame(orbitLoop);return;} ang+=0.006; var h=innerHeight, cx=innerWidth/2+st.x*h, cy=h/2-st.y*h, R=st.r*h*1.2; orbit.style.left=cx+'px'; orbit.style.top=cy+'px';
   orbit.querySelectorAll('.d').forEach(function(el,j){ var a=ang+j*Math.PI*2/7; el.style.transform='translate('+(Math.cos(a)*R)+'px,'+(Math.sin(a)*R*.6)+'px)'; el.style.opacity=.4+.6*(Math.sin(a)+1)/2; }); requestAnimationFrame(orbitLoop); } orbitLoop();
 /* orb state per section */
 function apply(sec,immediate){ var v=sec.dataset.orb.split(',').map(Number); var x=v[0], y=v[1], r=v[2]; if(mobile){ x=0; y=0.18; r=Math.min(r,.2); }
