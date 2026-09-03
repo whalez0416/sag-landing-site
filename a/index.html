@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>S.A.G 최적화 · 검색되는 병원에서 AI가 추천하는 병원으로 | NC 컨설팅</title>
-<meta name="description" content="AI는 병원을 찾지 않습니다. 대조합니다. 그 대조를 통과하는 여섯 조건을 하나로 채우는 S.A.G 최적화. 무료 AI 추천 진단.">
+<meta name="description" content="AI는 병원을 찾지 않습니다. 비교합니다. 그 비교를 통과하는 여섯 조건을 하나로 채우는 S.A.G 최적화. 무료 AI 추천 진단.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -78,7 +78,7 @@ h2{margin:0;font-size:clamp(40px,4.2vw,60px);line-height:1.15;font-weight:300;le
 .card6{position:relative;background:var(--card);padding:36px 32px 40px;display:flex;flex-direction:column;gap:16px;min-height:230px;overflow:hidden}
 .card6 .bb{position:absolute;inset:0;padding:1px;background:conic-gradient(from var(--ang,0deg),transparent 0 70%,#ff8a5b 85%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none}
 .card6:hover .bb{opacity:1}
-.card6 .hd{display:flex;align-items:center;gap:12px}.card6 .hd b{font-size:34px;font-weight:300}
+.card6 .hd{display:flex;align-items:center;gap:12px}.card6 .hd b{font-size:22px;font-weight:500;line-height:1.3}
 .card6 p{margin:0;font-size:16px;line-height:1.65}.card6 .tool{margin-top:auto;font-size:14px;color:var(--acc2);font-weight:500}
 /* 판정 */
 .big{display:flex;gap:56px;flex-wrap:wrap}
@@ -144,14 +144,8 @@ body.light .pc:hover{box-shadow:inset 0 0 0 2px var(--acc),0 26px 55px rgba(20,2
 body.light .dform input{background:rgba(0,0,0,.04);color:#17171c}
 /* dark act variety */
 #three,#six{background:#0e0e15}
-/* light-act section separation */
-body.light #answer{background:#f4f3f7}
-body.light #road{background:#fff}body.light .road .dot{box-shadow:0 0 0 7px #fff}
-body.light #about{background:#f4f3f7}
-body.light #partners{background:#fff}
-body.light #price{background:#f4f3f7}
-body.light .diag{background:#fff}
-body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
+/* light-act: uniform bg, separation via white cards + spacing */
+body.light .road .dot{box-shadow:0 0 0 7px #f4f3f7}
 .cnt{font-variant-numeric:tabular-nums}
 /* hero seam */
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,transparent,rgba(255,90,60,.05));pointer-events:none;z-index:0}
@@ -166,14 +160,14 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="#top">NC 컨설팅<span>|</span>S.A.G</a><div class="links"><a href="#three">세 화면</a><a href="#contrast">대조</a><a href="#six">여섯 조건</a><a href="#about">회사</a><a href="#price">비용</a></div><a class="cta" href="#diag">무료 AI 추천 진단</a></nav>
+<nav class="nav"><a class="brand" href="#top">NC 컨설팅<span>|</span>S.A.G</a><div class="links"><a href="#three">세 장면</a><a href="#contrast">비교</a><a href="#six">여섯 조건</a><a href="#about">회사</a><a href="#price">비용</a></div><a class="cta" href="#diag">무료 AI 추천 진단</a></nav>
 
 <section class="hero" id="top">
   <div class="beam"></div><div class="spot" id="spot"></div>
   <div class="wrap grid">
     <div>
       <h1 data-split>검색되는 병원에서<br><span class="grad">AI가 추천하는</span><br>병원으로.</h1>
-      <div class="sub"><p class="lede" data-reveal data-delay=".5">AI는 병원을 찾지 않습니다. 대조합니다. 그 대조를 통과하는 여섯 조건을 하나로 채웁니다.</p><a class="link" href="#diag" data-reveal data-delay=".7">무료 AI 추천 진단 →</a></div>
+      <div class="sub"><p class="lede" data-reveal data-delay=".5">AI는 병원을 찾지 않습니다. 비교합니다. 그 비교를 통과하는 여섯 조건을 하나로 채웁니다.</p><a class="link" href="#diag" data-reveal data-delay=".7">무료 AI 추천 진단 →</a></div>
     </div>
     <div class="kvwrap"><div class="kvbox kv" id="kv">
       <svg class="bm" viewBox="0 0 760 640"><defs><linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="#ff5a3c" stop-opacity="0"/><stop offset=".5" stop-color="#ffb08a"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/></linearGradient></defs><path d="M420 240 C 420 420, 240 440, 240 530"/><path d="M560 380 C 560 470, 340 480, 320 530"/><path d="M520 500 C 500 520, 440 525, 400 530"/></svg>
@@ -187,7 +181,7 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </section>
 
 <section class="sec" id="three"><div class="wrap">
-  <div class="head"><h2 data-split>환자가 병원을 만나는<br>세 화면</h2><p class="lede" data-reveal>검색 결과 목록, 검색 결과 위에 뜨는 AI 요약, AI 채팅의 답변. 화면은 셋이고, 셋 다 잡아야 합니다.</p></div>
+  <div class="head"><h2 data-split>환자가 병원을 결정하는<br>세 가지 장면</h2><p class="lede" data-reveal>검색 결과 목록, 검색 결과 위에 뜨는 AI 요약, AI 채팅의 답변. 화면은 셋이고, 셋 다 잡아야 합니다.</p></div>
   <div class="three" id="threeGrid" data-stagger>
     <figure><div class="winbox win-seo"></div><figcaption>검색 결과 · SEO</figcaption></figure>
     <figure><div class="winbox win-aeo"></div><figcaption>검색 위 AI 요약 · AEO</figcaption></figure>
@@ -196,10 +190,10 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
   </div>
 </div></section>
 
-<section class="band"><div class="glow"></div><div class="line"></div><div><div class="k" data-reveal>화면은 달라도 질문은 하나입니다</div><div class="q" data-split>"이 병원을 믿어도 되는가"</div></div></section>
+<section class="band"><div class="glow"></div><div class="line"></div><div><div class="k" data-reveal>화면은 달라도 질문은 하나입니다</div><div class="q" data-reveal>"이 병원을 믿어도 되는가"</div></div></section>
 
 <section class="sec" id="contrast"><div class="wrap two">
-  <div><h2 data-split>AI는 병원을<br>찾지 않습니다.<br><span class="grad">대조합니다.</span></h2><p class="lede" data-reveal style="margin-top:28px">병원이 스스로 하는 말은 광고로 읽힙니다. AI는 병원 바깥에서 같은 사실이 확인되는지 봅니다. 그 신호가 세 가지입니다.</p></div>
+  <div><h2 data-split>AI는 병원을<br>찾지 않습니다.<br><span class="grad">비교합니다.</span></h2><p class="lede" data-reveal style="margin-top:28px">병원이 스스로 하는 말은 광고로 읽힙니다. AI는 병원 바깥에서 같은 사실이 확인되는지 봅니다. 그 신호가 세 가지입니다.</p></div>
   <div class="rows" id="rows">
     <div class="row" data-reveal><div class="w grad">반복</div><div><div class="t">같은 이야기가 여러 곳에서 반복되는가</div><p>홈페이지, 지식 문서, 언론, 영상, 리뷰에서 같은 사실이 확인될 때 광고가 아니라 사실로 읽습니다.</p></div><div class="ck">✓</div></div>
     <div class="row" data-reveal data-delay=".15"><div class="w grad">권위</div><div><div class="t">AI가 이미 믿는 곳이 말하는가</div><p>AI가 신뢰하는 매체, 지식 문서, 구글이 그 병원을 언급해야 합니다.</p></div><div class="ck">✓</div></div>
@@ -209,20 +203,21 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </div></section>
 
 <section class="sec" id="six"><div class="wrap">
-  <div class="head"><h2 data-split>그 신호를 채우는<br>여섯 조건</h2><p class="lede" data-reveal>조건마다 그것을 채우는 도구가 하나씩 있습니다. 여섯이 다 켜져야 대조를 통과합니다.</p></div>
+  <div class="head"><h2 data-split>병원이 AI에게<br>선택되는 여섯 조건</h2><p class="lede" data-reveal>조건마다 그것을 채우는 도구가 하나씩 있습니다. 여섯이 다 채워져야 AI가 병원을 선택합니다.</p></div>
   <div class="six" data-stagger>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>읽힘</b></div><p>빠른데도 AI 답변에 없다면, 문제는 속도가 아니라 골격입니다.</p><div class="tool">홈페이지 최적화</div></div>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>사실</b></div><p>홈페이지 글은 광고로, 사전처럼 정리된 글은 사실로 읽힙니다.</p><div class="tool">병원 지식 문서 구축</div></div>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>전문가</b></div><p>환자가 마지막에 검색하는 건 원장님 이름입니다.</p><div class="tool">Medical Insights Korea 정기 칼럼</div></div>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>권위</b></div><p>기사 한 편은 하루 노출, 서로 인용된 기사는 AI 답변에 남습니다.</p><div class="tool">주요 언론 매체 정기 배포</div></div>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>현장</b></div><p>AI는 영상을 보지 못합니다. 자막만 읽습니다.</p><div class="tool">유튜브 자막 최적화</div></div>
-    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>평판</b></div><p>별점보다 구글이 먼저 보는 건 병원이 답했는가입니다.</p><div class="tool">구글 리뷰 관리</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>AI가 읽기 쉬운가</b></div><p>AI는 홈페이지를 눈이 아니라 코드로 읽습니다. 느리거나 글자가 이미지 속에 있으면 그대로 건너뜁니다.</p><div class="tool">홈페이지 최적화</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>광고가 아닌 사실로 읽히는가</b></div><p>사전처럼 정리된 문서는 광고가 아니라 사실로 인식되어 AI 답변의 근거가 됩니다.</p><div class="tool">병원 지식 문서 구축</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>전문가로 인정받는가</b></div><p>원장님 이름으로 실린 칼럼은 제3자가 보증하는 전문가의 서명이 됩니다.</p><div class="tool">Medical Insights Korea 정기 칼럼</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>권위 있는 곳이 말하는가</b></div><p>AI가 신뢰하는 매체가 병원을 언급할 때, 그 병원은 답변의 출처로 인용됩니다.</p><div class="tool">주요 언론 매체 정기 배포</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>영상도 AI가 읽는가</b></div><p>AI는 영상을 보지 못하고 자막만 읽습니다. 정확한 자막이 있어야 영상이 근거가 됩니다.</p><div class="tool">유튜브 자막 최적화</div></div>
+    <div class="card6"><div class="bb"></div><div class="hd"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#ff5a3c"/><path d="M6.5 11l3 3 6-7" stroke="#fff" stroke-width="2" fill="none"/></svg><b>환자 평판이 좋은가</b></div><p>구글과 AI는 리뷰와 병원의 응답을 평판 신호로 함께 봅니다.</p><div class="tool">구글 리뷰 관리</div></div>
   </div>
 </div></section>
 
 <section class="sec" id="case"><div class="wrap two" style="align-items:center">
   <div>
-    <h2 data-split>대조를 통과한 병원만<br>답에 오릅니다</h2>
+    <h2 data-split>AI에게 선택되려면,<br>넘어야 할 기준이 있습니다</h2>
+    <p class="lede" data-reveal style="margin-top:24px">AI와 검색엔진은 병원을 점수로 비교합니다. 대부분의 병원 홈페이지는 이 기준에 못 미칩니다. 아래는 저희가 관리한 병원이 같은 기준을 넘긴 결과입니다.</p>
     <div class="big" style="margin-top:34px" data-reveal><div><div class="n cnt" data-to="100">0</div><small>검색엔진 최적화 · 85에서</small></div><div><div class="n cnt" data-to="100">0</div><small>접근성 · 82에서</small></div><div><div class="n cnt" data-to="49" data-suf="배">0</div><small>AI가 읽어간 횟수 · 지식 문서 두 달</small></div><div><div class="n cnt" data-to="16" data-suf="배">0</div><small>AI 답변 거쳐 온 방문 · 주 3→49명</small></div></div>
     <p class="lede" style="margin-top:34px;max-width:44ch" data-reveal>서울 외과 전문병원 홈페이지, 구글 PageSpeed Insights 동일 조건. 디자인 변경 없음. 지식 문서는 병원 서버 기록.</p>
   </div>
@@ -237,7 +232,7 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </div></section>
 
 <section class="sec" id="answer"><div class="wrap">
-  <h2 data-split style="margin-bottom:48px">6개월 뒤, AI의 답이<br>이렇게 달라집니다</h2>
+  <h2 data-split style="margin-bottom:20px">S.A.G 솔루션 도입 6개월 뒤,<br>AI의 답이 이렇게 달라집니다</h2><p class="lede" data-reveal style="margin-bottom:44px">검색 결과, AI 요약, AI 답변, 리뷰까지 — 환자가 보는 화면 곳곳에서 답이 바뀝니다. 아래는 AI 채팅 답변의 예시입니다.</p>
   <div class="chats" data-stagger>
     <div class="chat"><div class="lab">지금</div><div class="u">강북구에서 갑상선 수술 잘하는 병원 추천해줘</div><div class="a">강북구에는 여러 병원이 있습니다. 대학병원인 A병원과 B병원이 갑상선 수술을 시행하며, 자세한 정보는 각 병원에 문의하시기 바랍니다.<span class="src" style="color:#55556a">출처 · 일반 블로그, 병원 목록 사이트</span></div></div>
     <div class="chat"><div class="lab on">S.A.G 6개월 후</div><div class="u">강북구에서 갑상선 수술 잘하는 병원 추천해줘</div><div class="a" id="typeA"></div></div>
@@ -245,7 +240,7 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </div></section>
 
 <section class="sec" id="road"><div class="wrap">
-  <h2 data-split style="margin-bottom:56px">착수 후 6개월, 이렇게 진행됩니다</h2>
+  <h2 data-split style="margin-bottom:56px">S.A.G 솔루션 도입 후 6개월, 이렇게 진행됩니다</h2>
   <div class="road" data-stagger>
     <div class="step"><div class="dot">1</div><div class="when">착수</div><b>진단 · 자료 수집</b><p>현재 검색·AI 노출 상태 진단, 병원 소개·의료진·사진 자료 수령.</p></div>
     <div class="step"><div class="dot">2</div><div class="when">1개월</div><b>기반 구축</b><p>홈페이지 최적화 완료, 지식 문서 첫 20건 발행, 구글 리뷰 동선 세팅.</p></div>
@@ -255,16 +250,16 @@ body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
 </div></section>
 
 <section class="sec" id="about"><div class="wrap">
-  <div class="head"><h2 data-split>잘되는 브랜드 더 잘되게,<br>안되는 브랜드 잘되게</h2><p class="lede" data-reveal>의료 브랜딩만 15년 넘게. 앤씨컨설팅이 병원 브랜딩·마케팅·경영을 함께해 온 경험으로, 이제 AI 시대의 병원 노출까지 책임집니다. 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879).</p></div>
+  <div class="head"><h2 data-split>잘되는 브랜드 더 잘되게,<br>안되는 브랜드 잘되게</h2><p class="lede" data-reveal>앤씨컨설팅은 20년이 넘은 의료 전문 브랜딩 회사입니다. 그만큼 축적된 노하우로 병원의 브랜딩·마케팅·경영을 함께하며 성장시켜 왔고, 이제 AI 시대의 병원 노출까지 책임집니다. 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879).</p></div>
   <div class="big" data-reveal>
-    <div><div class="n cnt" data-to="15" data-suf="년+">0</div><small>의료 브랜딩 전문 경력</small></div>
+    <div><div class="n cnt" data-to="20" data-suf="년+">0</div><small>의료 전문 브랜딩</small></div>
     <div><div class="n cnt" data-to="300" data-suf="%">0</div><small>파트너 평균 성장률</small></div>
     <div><div class="n cnt" data-to="90" data-suf="%">0</div><small>재계약률</small></div>
   </div>
 </div></section>
 
 <section class="sec" id="partners"><div class="wrap">
-  <div class="head"><h2 data-split>이미, 이렇게 키웠습니다</h2><p class="lede" data-reveal>15년+ 의료 브랜딩이 만든 실제 파트너의 성장.</p></div>
+  <div class="head"><h2 data-split>이미, 이렇게 키웠습니다</h2><p class="lede" data-reveal>20년+ 의료 전문 브랜딩이 만든 실제 파트너의 성장.</p></div>
   <div class="plist" data-stagger>
     <div class="prow"><div class="pn">골드만비뇨의학과</div><div class="pm"><b>5</b>개 지점 확장</div><div class="pd">2012년부터 함께 · 비뇨의학과 부동의 1위</div></div>
     <div class="prow"><div class="pn">글로리서울안과</div><div class="pm">노안 백내장 <b>시장 선도</b></div><div class="pd">과감한 투자로 새 시장을 개척</div></div>

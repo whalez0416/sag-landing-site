@@ -96,7 +96,7 @@ body.light{background:#f4f3f7;color:#17171c}
 body.light #orb{opacity:0}
 body.light .sec{background:#f4f3f7;border-top-color:rgba(0,0,0,.06)}
 body.light #diag{background:#f4f3f7}
-body.light footer{background:#ecebf1;border-top-color:rgba(0,0,0,.08);color:#5a5a66}
+body.light footer{background:#f4f3f7;border-top-color:rgba(0,0,0,.06);color:#5a5a66}
 body.light h1,body.light h2{color:#17171c}
 body.light .lede{color:#4b4b57}
 body.light .eyebrow{color:#c2410c}
@@ -134,6 +134,7 @@ body.light .nav .cta{border-color:rgba(0,0,0,.5);color:#17171c}
 .dots div::before{width:12px;height:12px}
 .dots b{font-size:23px;font-weight:700;letter-spacing:-.01em}
 .dots span{flex-basis:100%;margin-left:24px;font-size:15px;color:var(--mute)}
+.dots .tool{flex-basis:100%;margin-left:24px;margin-top:6px;font-style:normal;font-size:13px;font-weight:600;color:var(--acc2);letter-spacing:.02em}
 /* ===== 대표 파트너 grid + 회사 큰 수치 ===== */
 .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 @media(max-width:900px){.pgrid{grid-template-columns:1fr}}
@@ -156,11 +157,9 @@ body.light .os .txt{text-shadow:none}
 .pc:not(.std):hover{border-color:rgba(255,90,60,.55);box-shadow:0 22px 50px rgba(0,0,0,.35)}
 body.light .pc:not(.std):hover{box-shadow:0 22px 50px rgba(20,20,40,.12)}
 .price:hover .pc.std:not(:hover){filter:saturate(.55) brightness(.92)}
-/* ===== light-act section separation: alternating tint + dividers ===== */
-body.light #answer,body.light #about,body.light #price{background:#f5f4f8}
-body.light #road,body.light #about2{background:#eceaf2}
-body.light #diag{background:#eceaf2}
-body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
+/* ===== light act: uniform bg, separation via white cards + spacing (no color-block seams) ===== */
+body.light #diag{background:#f4f3f7}
+body.light .sec,body.light #diag{border-top-color:transparent}
 /* bottom channel marquee */
 .cmarquee{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .cmtrack{display:inline-flex;align-items:center;white-space:nowrap;animation:cmarq 26s linear infinite;will-change:transform}
@@ -202,7 +201,7 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
   <div class="eyebrow" data-reveal>첫 번째 면 · 읽힘</div>
   <h2 data-split>빠른 홈페이지도,<br>AI엔 보이지 않습니다</h2>
   <p class="lede" data-reveal>AI와 검색엔진은 홈페이지를 보지 않고 읽습니다. 느리거나 화면이 밀리거나 글자가 이미지 속에 있으면 읽지 못하고 건너뜁니다.</p>
-  <div class="dots" data-reveal><div><b>홈페이지 최적화</b><span>속도, 화면 밀림, 이미지 무게, AI가 읽는 골격</span></div></div>
+  <div class="dots" data-reveal><div><b>AI가 읽기 쉬운가</b><span>AI는 홈페이지를 눈이 아니라 코드로 읽습니다. 느리거나 이미지 속에 갇힌 글자는 그냥 건너뜁니다.</span><em class="tool">→ 홈페이지 최적화</em></div></div>
   <div class="nums" data-reveal><div><div class="n cnt" data-to="100">0</div><small>검색엔진 최적화 · 85에서</small></div><div><div class="n cnt" data-to="100">0</div><small>접근성 · 82에서</small></div></div>
 </div></div></section>
 
@@ -210,7 +209,7 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
   <div class="eyebrow" data-reveal>두 · 세 번째 면 · 사실 · 전문가</div>
   <h2 data-split>환자는 광고가 아닌<br>진실을 찾습니다</h2>
   <p class="lede" data-reveal>사전처럼 정리된 문서는 사실로 읽히고, 원장님 이름으로 실린 칼럼은 전문가의 서명이 됩니다. 환자가 마지막에 검색하는 것은 병원 이름이 아니라 원장님 이름입니다.</p>
-  <div class="dots" data-reveal><div><b>병원 지식 문서 구축</b><span>환자의 질문 하나에 문서 하나, 매월 20건</span></div><div><b>Medical Insights Korea 정기 칼럼</b><span>원장님 이름의 정기 칼럼</span></div></div>
+  <div class="dots" data-reveal><div><b>광고가 아닌 사실로 읽히는가</b><span>사전처럼 정리된 문서는 광고가 아니라 사실로 인식되어 답변의 근거가 됩니다.</span><em class="tool">→ 병원 지식 문서 구축</em></div><div><b>전문가로 인정받는가</b><span>원장님 이름으로 실린 칼럼은 제3자가 보증하는 전문가의 서명이 됩니다.</span><em class="tool">→ Medical Insights Korea 정기 칼럼</em></div></div>
   <div class="nums" data-reveal><div><div class="n cnt" data-to="49" data-suf="배">0</div><small>AI가 읽어간 횟수 · 두 달</small></div><div><div class="n cnt" data-to="16" data-suf="배">0</div><small>AI 답변 거쳐 온 방문</small></div></div>
 </div></div></section>
 
@@ -218,7 +217,7 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
   <div class="eyebrow" data-reveal>네 · 다섯 · 여섯 번째 면 · 권위 · 현장 · 평판</div>
   <h2 data-split>한 번의 노출이 아닌,<br>지속가능한 병원 성장</h2>
   <p class="lede" data-reveal>기사 한 편은 하루 노출이지만 서로 인용된 기사는 AI 답변에 남습니다. AI는 영상을 보지 못하고 자막만 읽습니다. 별점보다 먼저 보는 것은 병원이 답했는가입니다.</p>
-  <div class="dots" data-reveal><div><b>주요 언론 매체 정기 배포</b><span>상위 건강·의료 매체 정기 배포</span></div><div><b>유튜브 자막 최적화</b><span>모든 영상에 직접 자막</span></div><div><b>구글 리뷰 관리</b><span>리뷰 확보와 병원 이름의 응답</span></div></div>
+  <div class="dots" data-reveal><div><b>권위 있는 곳이 말하는가</b><span>AI가 신뢰하는 매체의 언급은 답변의 출처로 인용됩니다.</span><em class="tool">→ 주요 언론 매체 정기 배포</em></div><div><b>영상도 AI가 읽는가</b><span>AI는 영상을 보지 못하고 자막만 읽습니다. 정확한 자막이 곧 근거입니다.</span><em class="tool">→ 유튜브 자막 최적화</em></div><div><b>환자 평판이 좋은가</b><span>구글과 AI는 리뷰와 병원의 응답을 평판 신호로 함께 봅니다.</span><em class="tool">→ 구글 리뷰 관리</em></div></div>
 </div></div></section>
 
 <section class="rip" data-orb="0,0.12,0.24,6,1" data-ripple="1"><div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:30px">
@@ -227,7 +226,8 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
 </div></section>
 
 <section class="sec" id="answer" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
-  <h2 data-split>6개월 뒤, AI의 답이<br>이렇게 달라집니다</h2>
+  <h2 data-split>S.A.G 솔루션 도입 6개월 뒤,<br>AI의 답이 이렇게 달라집니다</h2>
+  <p class="lede" data-reveal style="margin:-24px 0 40px;max-width:none">검색 결과, AI 요약, AI 답변, 리뷰까지 — 환자가 보는 여러 화면에서 답이 함께 달라집니다.</p>
   <div class="chats" data-stagger>
     <div class="chat"><div class="lab">지금</div><div class="u">강북구에서 갑상선 수술 잘하는 병원 추천해줘</div><div class="a">강북구에는 여러 병원이 있습니다. 대학병원인 A병원과 B병원이 갑상선 수술을 시행하며, 자세한 정보는 각 병원에 문의하시기 바랍니다.<span class="src" style="color:#5e5670">출처 · 일반 블로그, 병원 목록 사이트</span></div></div>
     <div class="chat"><div class="lab on">S.A.G 6개월 후</div><div class="u">강북구에서 갑상선 수술 잘하는 병원 추천해줘</div><div class="a" id="typeC"></div></div>
@@ -235,7 +235,7 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
 </div></section>
 
 <section class="sec" id="road" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
-  <h2 data-split>착수 후 6개월</h2>
+  <h2 data-split>S.A.G 솔루션 도입 후 6개월</h2>
   <div class="road" data-stagger>
     <div><b>착수</b><p>현재 검색, AI 노출 상태 진단. 병원 자료 수령.</p></div>
     <div><b>1개월</b><p>홈페이지 최적화 완료, 지식 문서 첫 20건, 리뷰 동선 세팅.</p></div>
@@ -247,9 +247,9 @@ body.light .price .pcbtn:hover,body.light .pc.std .pcbtn{background:var(--acc);c
 <section class="sec" id="about" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
   <div class="eyebrow" data-reveal>앤씨컨설팅 · NC CONSULTING</div>
   <h2 data-split>잘되는 브랜드 더 잘되게,<br>안되는 브랜드 잘되게</h2>
-  <p class="lede" data-reveal style="margin-top:20px;max-width:52ch">의료 브랜딩만 15년 넘게. 병원의 브랜딩·마케팅·경영을 통합해 온 앤씨컨설팅이 S.A.G를 만듭니다. 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879).</p>
+  <p class="lede" data-reveal style="margin-top:20px;max-width:52ch">앤씨컨설팅은 20년이 넘은 의료 전문 브랜딩 회사입니다. 그만큼 축적된 노하우로 병원을 성장시켜 왔고, 그 노하우를 담은 것이 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879)입니다.</p>
   <div class="nums" data-reveal style="margin-top:48px">
-    <div><div class="n cnt" data-to="15" data-suf="년+">0</div><small>의료 브랜딩 전문</small></div>
+    <div><div class="n cnt" data-to="20" data-suf="년+">0</div><small>의료 전문 브랜딩</small></div>
     <div><div class="n cnt" data-to="300" data-suf="%">0</div><small>파트너 평균 성장률</small></div>
     <div><div class="n cnt" data-to="90" data-suf="%">0</div><small>재계약률</small></div>
     <div><div class="n cnt" data-to="19">0</div><small>소개로 이어진 파트너</small></div>
