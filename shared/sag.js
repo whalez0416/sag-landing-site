@@ -78,11 +78,12 @@ function orb(cv,opts){ opts=opts||{}; var gl=cv.getContext('webgl',{antialias:fa
   var U={}; ['res','t','mouse','lit','rip','off','rad','alpha'].forEach(function(k){U[k]=gl.getUniformLocation(pr,k);});
   var st={lit:opts.lit!=null?opts.lit:6,rip:0,x:opts.x||0,y:opts.y||0,r:opts.r||.29,alpha:1,mx:.5,my:.5};
   var dpr=Math.min(devicePixelRatio||1,opts.maxDpr||1.5);
-  function size(){ var w=cv.clientWidth||innerWidth, h=cv.clientHeight||innerHeight; cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); gl.viewport(0,0,cv.width,cv.height); } size(); addEventListener('resize',size);
+  function size(){ var w=cv.clientWidth||innerWidth, h=cv.clientHeight||innerHeight; var sc=dpr, cap=opts.maxPx||0; if(cap){ var m=Math.max(w,h)*dpr; if(m>cap) sc=dpr*cap/m; } cv.width=Math.round(w*sc); cv.height=Math.round(h*sc); gl.viewport(0,0,cv.width,cv.height); } size(); addEventListener('resize',size);
   if(opts.mouse!==false){ addEventListener('pointermove',function(e){ st.mx=e.clientX/innerWidth; st.my=1-e.clientY/innerHeight; }); }
   var t0=performance.now(), vis=true;
   if('IntersectionObserver' in window){ new IntersectionObserver(function(en){vis=en[0].isIntersecting;}).observe(cv); }
-  (function loop(){ if(vis&&!document.hidden){ gl.uniform2f(U.res,cv.width,cv.height); gl.uniform1f(U.t,reduce?0:(performance.now()-t0)/1000); gl.uniform2f(U.mouse,st.mx,st.my); gl.uniform1f(U.lit,st.lit); gl.uniform1f(U.rip,st.rip); gl.uniform2f(U.off,st.x,st.y); gl.uniform1f(U.rad,st.r); gl.uniform1f(U.alpha,st.alpha); gl.drawArrays(gl.TRIANGLE_STRIP,0,4);} requestAnimationFrame(loop); })();
+  var _last=0, _min=opts.fps?1000/opts.fps:0;
+  (function loop(now){ requestAnimationFrame(loop); if(!(vis&&!document.hidden)) return; if(_min&&now&&now-_last<_min) return; _last=now||0; gl.uniform2f(U.res,cv.width,cv.height); gl.uniform1f(U.t,reduce?0:(performance.now()-t0)/1000); gl.uniform2f(U.mouse,st.mx,st.my); gl.uniform1f(U.lit,st.lit); gl.uniform1f(U.rip,st.rip); gl.uniform2f(U.off,st.x,st.y); gl.uniform1f(U.rad,st.r); gl.uniform1f(U.alpha,st.alpha); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); })();
   return st;
 }
 return {S:S,W:W,STEPS:STEPS,phone:phone,winbox:winbox,split:split,init:init,type:type,orb:orb,reduce:reduce,CONFIG:CONFIG,lenis:function(){return lenis;}};

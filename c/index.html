@@ -190,7 +190,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 <script>
 (function(){
 SAG.init();
-var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1});
+var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
 /* orbit dots */
