@@ -38,7 +38,7 @@ h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.15;font-weight:300;lett
 .kvwrap{position:relative;height:640px}
 .kv .win{position:absolute}
 .kv .dim{filter:brightness(.55) blur(1px)}
-.verd{position:absolute;left:70px;top:520px;width:420px;border-radius:18px;padding:22px 24px;background:rgba(16,16,22,.82);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,90,60,.18);z-index:6}
+.verd{position:absolute;left:70px;top:520px;width:420px;border-radius:18px;padding:22px 24px;background:rgba(16,16,22,.94);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,90,60,.18);z-index:6}
 .verd small{font-size:11px;letter-spacing:.1em;color:var(--acc2)}
 .verd .qq{font-size:20px;margin:6px 0 14px}
 .verd .hexes{display:flex;gap:8px;align-items:center}
@@ -261,7 +261,7 @@ gsap.timeline({repeat:-1,repeatDelay:1.6,scrollTrigger:{trigger:'#threeGrid',sta
 /* 세 신호 checks */
 gsap.to('#rows .ck',{scale:1,duration:.4,stagger:.25,ease:'back.out(2.5)',delay:.6,scrollTrigger:{trigger:'#rows',start:'top 75%',once:true}});
 /* border beam angle */
-gsap.to('.card6 .bb',{'--ang':'360deg',duration:3,ease:'none',repeat:-1});
+gsap.to('.card6 .bb',{'--ang':'360deg',duration:3,ease:'none',repeat:-1,scrollTrigger:{trigger:'#six',toggleActions:'play pause resume pause'}});
 /* typewriter */
 SAG.type(document.getElementById('typeA'),'강북구에서는 OOO 병원이 갑상선 수술을 전문으로 하는 외과 병원으로 알려져 있습니다. OOO 원장은 갑상선 결절과 암 수술 경험이 많고, 환자 리뷰에서도 설명이 자세하다는 평가가 많습니다. 출처 · [1] 건강 전문지 기사 [2] OOO 병원 지식 문서 [3] Medical Insights Korea 칼럼 [4] 구글 리뷰',{trigger:'#answer'});
 })();
