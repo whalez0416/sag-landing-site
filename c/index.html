@@ -89,16 +89,63 @@ h2{margin:0;font-size:clamp(32px,3.9vw,56px);line-height:1.15;font-weight:500;le
 .dform{margin-top:34px}
 footer{position:relative;z-index:2;padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim);background:var(--bg)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-#answer{transition:background-color .7s ease,color .7s ease}.nav{transition:background-color .5s ease,color .5s ease}
-#answer.light{background:#f4f3f7;color:#17171c}
-#answer.light h2{color:#17171c}
-#answer.light .chat{background:#fff;box-shadow:0 24px 60px rgba(20,20,40,.10)}
-#answer.light .chat .lab{color:#8a8a98}
-#answer.light .chat .u{background:#ececf2;color:#17171c}
-#answer.light .chat .a{background:#f6f6fa;border-color:rgba(0,0,0,.08);color:#33333c}
-body.navlight .nav{background:rgba(244,243,247,.72);border-bottom-color:rgba(0,0,0,.08)}
-body.navlight .nav .brand,body.navlight .nav .links a{color:#17171c}
-body.navlight .nav .brand span{color:#8a8a98}
+/* ===== two-act theme: 문제(dark) -> 해답(light), latched from #answer ===== */
+#orb{transition:opacity .7s ease}
+.sec,.os,footer,.chat,.chat .a,.chat .u,.road div,.pgrid div,.pc,.dform input,.nav{transition:background-color .6s ease,color .6s ease,border-color .6s ease,box-shadow .6s ease}
+body.light{background:#f4f3f7;color:#17171c}
+body.light #orb{opacity:0}
+body.light .sec{background:#f4f3f7;border-top-color:rgba(0,0,0,.06)}
+body.light #diag{background:#f4f3f7}
+body.light footer{background:#ecebf1;border-top-color:rgba(0,0,0,.08);color:#5a5a66}
+body.light h1,body.light h2{color:#17171c}
+body.light .lede{color:#4b4b57}
+body.light .eyebrow{color:#c2410c}
+body.light .nums small{color:#5a5a66}
+body.light .chat{background:#fff;box-shadow:0 24px 60px rgba(20,20,40,.10)}
+body.light .chat .lab{color:#8a8a98}
+body.light .chat .u{background:#ececf2;color:#17171c}
+body.light .chat .a{background:#f6f6fa;border-color:rgba(0,0,0,.08);color:#33333c}
+body.light .road div,body.light .pgrid div{background:#fff;box-shadow:0 14px 40px rgba(20,20,40,.07)}
+body.light .road div p,body.light .pgrid div p{color:#5a5a66}
+body.light .road .last,body.light .pgrid .last{background:#fff1ec}
+body.light .pc{background:#fff;border-color:rgba(0,0,0,.08)}
+body.light .pc .nm{color:#5a5a66}body.light .pc ul{color:#4b4b57}
+body.light .pc.std{border-color:rgba(255,90,60,.5)}
+body.light .pc.std::after{background:#fff}
+body.light .pc.std .nm{color:#c2410c}body.light .pc.std ul{color:#33333c}
+body.light #diag .hov{display:none}
+body.light #diag .wrap{grid-template-columns:1fr;max-width:660px;margin:0 auto}
+body.light .dform input{background:#fff;border-color:rgba(0,0,0,.16);color:#17171c}
+body.light .dform label{color:#5a5a66}
+body.light .nav{background:rgba(244,243,247,.8);border-bottom-color:rgba(0,0,0,.08)}
+body.light .nav .brand,body.light .nav .links a{color:#17171c}
+body.light .nav .brand span{color:#8a8a98}
+body.light .nav .links a:hover{color:#000}
+body.light .nav .cta{border-color:rgba(0,0,0,.5);color:#17171c}
+/* ===== G1 font visibility ===== */
+.lede{font-size:19px;color:#dcd7e6;max-width:44ch}
+.hero .lede{font-size:20px;color:#efeaf6;max-width:46ch}
+.eyebrow{font-size:14px}
+.nums .n{font-size:clamp(52px,6vw,72px)}
+.nums small{font-size:14px;color:#c8c2d6}
+/* ===== C2 six conditions prominent ===== */
+.dots{gap:18px;margin-top:30px}
+.dots div{font-size:18px}
+.dots div::before{width:12px;height:12px}
+.dots b{font-size:23px;font-weight:700;letter-spacing:-.01em}
+.dots span{flex-basis:100%;margin-left:24px;font-size:15px;color:var(--mute)}
+/* ===== 대표 파트너 grid + 회사 큰 수치 ===== */
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media(max-width:900px){.pgrid{grid-template-columns:1fr}}
+.pgrid div{border-radius:20px;background:var(--card);padding:32px 28px}
+.pgrid div b{display:block;font-size:22px;font-weight:700;margin-bottom:12px}
+.pgrid div p{margin:0;font-size:15px;line-height:1.7;color:var(--mute)}
+.pgrid .last{background:#241420}.pgrid .last b{color:var(--acc2)}
+#about .nums .n,#about2 .nums .n{font-size:clamp(56px,7vw,90px)}
+#about .nums,#about2 .nums{gap:48px}
+/* legibility over the orb (dark act only) */
+.os .txt{text-shadow:0 1px 24px rgba(0,0,0,.5)}
+body.light .os .txt{text-shadow:none}
 </style>
 </head>
 <body>
@@ -113,19 +160,19 @@ body.navlight .nav .brand span{color:#8a8a98}
 
 <section class="os r" data-orb="0.36,0,0.26,6,1" data-orbit="1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>대조</div>
-  <h2 data-split>더 이상 환자는<br>하나만 검색하지 않습니다</h2>
+  <h2 data-split>환자는 한 곳만<br>보지 않습니다</h2>
   <p class="lede" data-reveal>검색, AI, 홈페이지, 기사, 영상, 리뷰. 일곱 화면을 오가며 같은 병원이 같은 말을 하는지 확인합니다. AI도 같은 방식으로 병원을 대조합니다.</p>
 </div></div></section>
 
 <section class="os l" data-orb="-0.36,0,0.26,0,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>대부분의 병원</div>
-  <h2 data-split>AI 답변에<br>귀 병원이 없는 이유</h2>
+  <h2 data-split>AI는 아직<br>당신의 병원을 모릅니다</h2>
   <p class="lede" data-reveal>여섯 면 중 켜진 면이 없기 때문입니다. 디자인이 좋아도, 기사가 한 번 나가도, 영상이 많아도 AI에게는 보이지 않습니다. AI가 읽는 건 골격, 서로 인용된 근거, 글자로 남은 자막과 답글입니다.</p>
 </div></div></section>
 
 <section class="os l" id="six" data-orb="-0.36,0,0.26,1,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>첫 번째 면 · 읽힘</div>
-  <h2 data-split>빠른데도 없다면,<br>속도가 아니라 골격입니다</h2>
+  <h2 data-split>빠른 홈페이지도,<br>AI엔 보이지 않습니다</h2>
   <p class="lede" data-reveal>AI와 검색엔진은 홈페이지를 보지 않고 읽습니다. 느리거나 화면이 밀리거나 글자가 이미지 속에 있으면 읽지 못하고 건너뜁니다.</p>
   <div class="dots" data-reveal><div><b>홈페이지 최적화</b><span>속도, 화면 밀림, 이미지 무게, AI가 읽는 골격</span></div></div>
   <div class="nums" data-reveal><div><div class="n cnt" data-to="100">0</div><small>검색엔진 최적화 · 85에서</small></div><div><div class="n cnt" data-to="100">0</div><small>접근성 · 82에서</small></div></div>
@@ -133,7 +180,7 @@ body.navlight .nav .brand span{color:#8a8a98}
 
 <section class="os r" data-orb="0.36,0,0.26,3,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>두 · 세 번째 면 · 사실 · 전문가</div>
-  <h2 data-split>광고가 아니라 사실로,<br>병원이 아니라 원장님 이름으로</h2>
+  <h2 data-split>광고는 잊히고,<br>사실만 인용됩니다</h2>
   <p class="lede" data-reveal>사전처럼 정리된 문서는 사실로 읽히고, 원장님 이름으로 실린 칼럼은 전문가의 서명이 됩니다. 환자가 마지막에 검색하는 것은 병원 이름이 아니라 원장님 이름입니다.</p>
   <div class="dots" data-reveal><div><b>병원 지식 문서 구축</b><span>환자의 질문 하나에 문서 하나, 매월 20건</span></div><div><b>Medical Insights Korea 정기 칼럼</b><span>원장님 이름의 정기 칼럼</span></div></div>
   <div class="nums" data-reveal><div><div class="n cnt" data-to="49" data-suf="배">0</div><small>AI가 읽어간 횟수 · 두 달</small></div><div><div class="n cnt" data-to="16" data-suf="배">0</div><small>AI 답변 거쳐 온 방문</small></div></div>
@@ -141,13 +188,13 @@ body.navlight .nav .brand span{color:#8a8a98}
 
 <section class="os l" data-orb="-0.36,0,0.26,6,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>네 · 다섯 · 여섯 번째 면 · 권위 · 현장 · 평판</div>
-  <h2 data-split>서로 인용된 기사,<br>읽히는 자막, 답하는 병원</h2>
+  <h2 data-split>한 번의 노출보다,<br>매일 쌓이는 근거</h2>
   <p class="lede" data-reveal>기사 한 편은 하루 노출이지만 서로 인용된 기사는 AI 답변에 남습니다. AI는 영상을 보지 못하고 자막만 읽습니다. 별점보다 먼저 보는 것은 병원이 답했는가입니다.</p>
   <div class="dots" data-reveal><div><b>주요 언론 매체 정기 배포</b><span>상위 건강·의료 매체 정기 배포</span></div><div><b>유튜브 자막 최적화</b><span>모든 영상에 직접 자막</span></div><div><b>구글 리뷰 관리</b><span>리뷰 확보와 병원 이름의 응답</span></div></div>
 </div></div></section>
 
 <section class="rip" data-orb="0,0.12,0.24,6,1" data-ripple="1"><div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:30px">
-  <h2 data-split>여섯 조건이 채워져야<br>밖으로 퍼집니다</h2>
+  <h2 data-split>여섯 면이 모두 켜질 때,<br>비로소 퍼집니다</h2>
   <div class="chips" data-stagger><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span></div>
 </div></section>
 
@@ -172,13 +219,23 @@ body.navlight .nav .brand span{color:#8a8a98}
 <section class="sec" id="about" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
   <div class="eyebrow" data-reveal>앤씨컨설팅 · NC CONSULTING</div>
   <h2 data-split>잘되는 브랜드 더 잘되게,<br>안되는 브랜드 잘되게</h2>
-  <p class="lede" data-reveal style="margin-top:20px">25년간 병원 브랜딩·마케팅·경영을 함께해 온 앤씨컨설팅이 만듭니다. 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879).</p>
-  <div class="nums" data-reveal style="margin-top:40px">
-    <div><div class="n cnt" data-to="25" data-suf="년">0</div><small>병원 마케팅 경력</small></div>
+  <p class="lede" data-reveal style="margin-top:20px;max-width:52ch">의료 브랜딩만 15년 넘게. 병원의 브랜딩·마케팅·경영을 통합해 온 앤씨컨설팅이 S.A.G를 만듭니다. 특허받은 NC 브랜딩·마케팅 통합 솔루션(제10-2022-0055879).</p>
+  <div class="nums" data-reveal style="margin-top:48px">
+    <div><div class="n cnt" data-to="15" data-suf="년+">0</div><small>의료 브랜딩 전문</small></div>
     <div><div class="n cnt" data-to="300" data-suf="%">0</div><small>파트너 평균 성장률</small></div>
     <div><div class="n cnt" data-to="90" data-suf="%">0</div><small>재계약률</small></div>
+    <div><div class="n cnt" data-to="19">0</div><small>소개로 이어진 파트너</small></div>
   </div>
-  <p class="lede" data-reveal style="margin-top:28px">대표 파트너 · 골드만비뇨의학과 · 글로리서울안과 · 위드유의원·한의원</p>
+</div></section>
+
+<section class="sec" id="about2" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
+  <div class="eyebrow" data-reveal>대표 파트너</div>
+  <h2 data-split>숫자로 증명된 파트너십</h2>
+  <div class="pgrid" data-stagger style="margin-top:8px">
+    <div><b>골드만비뇨의학과</b><p>2012년부터 통합 브랜딩·마케팅을 함께하며 5개 지점으로 확장, 비뇨의학과 부동의 1위로 성장.</p></div>
+    <div><b>글로리서울안과</b><p>관심이 적던 노안·백내장 시장에 과감히 투자, 새 시장을 개척하며 도약.</p></div>
+    <div class="last"><b>위드유의원·한의원</b><p>이벤트 없이 진정성 브랜딩으로 승부해 매출 3배 성장.</p></div>
+  </div>
 </div></section>
 
 <section class="sec" id="price" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
@@ -213,7 +270,7 @@ body.navlight .nav .brand span{color:#8a8a98}
 <script>
 (function(){
 SAG.init();
-ScrollTrigger.create({trigger:'#answer',start:'top 62%',end:'bottom 45%',onToggle:function(s){document.getElementById('answer').classList.toggle('light',s.isActive);document.body.classList.toggle('navlight',s.isActive);}});
+ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');},onLeaveBack:function(){document.body.classList.remove('light');}});
 var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
