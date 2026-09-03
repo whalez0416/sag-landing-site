@@ -221,7 +221,7 @@ if(SAG.reduce){ gsap.set(stMk,{scale:1}); }
 document.querySelectorAll('#chTxt .ch1').forEach(function(c){ ScrollTrigger.create({trigger:c,start:'top 55%',end:'bottom 55%',onEnter:function(){setScreen(c.dataset.screen,c.dataset.mark);},onEnterBack:function(){setScreen(c.dataset.screen,c.dataset.mark);}}); });
 if(!SAG.reduce){ gsap.set(stMk,{scale:0}); gsap.to(stMk,{scale:1,duration:.45,ease:'back.out(2.2)',scrollTrigger:{trigger:'#chapters',start:'top 60%',once:true}}); }
 /* hero phones rise */
-if(!SAG.reduce){ gsap.from('#arc .slot',{y:80,opacity:0,duration:.9,stagger:{each:.08,from:'center'},ease:'power3.out',delay:.5}); }
+if(!SAG.reduce){ gsap.from('#arcwrap',{opacity:0,duration:.7,ease:'power2.out',delay:.35}); gsap.from('#arc .slot',{y:60,duration:.9,stagger:{each:.08,from:'center'},ease:'power3.out',delay:.5}); }
 var sw=new Swiper('#sw',{effect:'coverflow',centeredSlides:true,slidesPerView:'auto',spaceBetween:0,initialSlide:1,speed:700,grabCursor:true,coverflowEffect:{rotate:28,stretch:0,depth:180,modifier:1,slideShadows:false},autoplay:SAG.reduce?false:{delay:2200,disableOnInteraction:false}});
 sw.on('reachEnd',function(){ setTimeout(function(){ sw.slideTo(0); },1800); });
 })();
