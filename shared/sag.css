@@ -1,7 +1,8 @@
 /* SAG shared: phone mock, app screens, browser windows, utilities */
 *{box-sizing:border-box}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:"Pretendard","Pretendard Variable","Apple SD Gothic Neo","Malgun Gothic",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:"Black Han Sans","Pretendard",sans-serif;font-weight:400;letter-spacing:-.01em}
 img{max-width:100%}
 h1,h2,h3,p{word-break:keep-all}
 a{color:inherit}
