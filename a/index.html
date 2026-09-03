@@ -119,6 +119,17 @@ h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.15;font-weight:300;lett
 .dform input{background:rgba(255,255,255,.05)}
 footer{padding:40px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+/* light chapter: 반전 지점(#answer)에서 배경 모프 */
+#answer{background:var(--bg);transition:background-color .7s ease,color .7s ease}.nav{transition:background-color .5s ease,color .5s ease}
+#answer.light{background:#f4f3f7;color:#17171c}
+body.navlight .nav{background:rgba(244,243,247,.72);border-bottom-color:rgba(0,0,0,.08)}
+body.navlight .nav .brand,body.navlight .nav .links a{color:#17171c}
+body.navlight .nav .brand span{color:#8a8a98}
+#answer.light h2{color:#17171c}
+#answer.light .chat{background:#fff;box-shadow:0 24px 60px rgba(20,20,40,.10)}
+#answer.light .chat .lab{color:#8a8a98}
+#answer.light .chat .u{background:#ececf2;color:#17171c}
+#answer.light .chat .a{background:#f6f6fa;border-color:rgba(0,0,0,.08);color:#33333c}
 </style>
 </head>
 <body>
@@ -244,6 +255,7 @@ document.querySelectorAll('.win-aeo').forEach(function(e){e.innerHTML=SAG.W.aeo;
 document.querySelectorAll('.win-gpt').forEach(function(e){e.innerHTML=SAG.W.gpt;});
 document.querySelectorAll('.kv .win-gpt .win').forEach(function(w){w.style.width='480px';w.style.height='300px';});
 SAG.init();
+ScrollTrigger.create({trigger:'#answer',start:'top 62%',end:'bottom 45%',onToggle:function(s){document.getElementById('answer').classList.toggle('light',s.isActive);document.body.classList.toggle('navlight',s.isActive);}});
 /* key visual scale */
 var kv=document.getElementById('kv'), kw=kv.parentNode;
 function fit(){ var s=Math.min(1,kw.clientWidth/760); kv.style.transform='scale('+s+')'; kw.style.height=(640*s)+'px'; } fit(); addEventListener('resize',fit);

@@ -97,6 +97,14 @@ h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.2;font-weight:700;lette
 .dform button{border-radius:14px}
 footer{padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+#flip{transition:background-color .7s ease,color .7s ease}.nav{transition:background-color .5s ease,color .5s ease}
+#flip.light{background:#f4f3f7;color:#17171c}
+#flip.light .eyebrow{color:#8a8a98}
+#flip.light h2{color:#17171c}
+#flip.light .lede{color:#4a4a55}
+body.navlight .nav{background:rgba(244,243,247,.72);border-bottom-color:rgba(0,0,0,.08)}
+body.navlight .nav .brand,body.navlight .nav .links a{color:#17171c}
+body.navlight .nav .brand span{color:#8a8a98}
 </style>
 </head>
 <body>
@@ -217,6 +225,7 @@ function setScreen(key,mark){ if(stIn.dataset.k===key) return; stIn.dataset.k=ke
   gsap.fromTo(stMk,{scale:0},{scale:1,duration:.45,ease:'back.out(2.2)',delay:.35});
   if(mark==='x') gsap.fromTo(stick.querySelector('.ph'),{x:-6},{x:0,duration:.08,repeat:5,yoyo:true,delay:.5}); }
 SAG.init();
+ScrollTrigger.create({trigger:'#flip',start:'top 62%',end:'bottom 45%',onToggle:function(s){document.getElementById('flip').classList.toggle('light',s.isActive);document.body.classList.toggle('navlight',s.isActive);}});
 if(SAG.reduce){ gsap.set(stMk,{scale:1}); }
 document.querySelectorAll('#chTxt .ch1').forEach(function(c){ ScrollTrigger.create({trigger:c,start:'top 55%',end:'bottom 55%',onEnter:function(){setScreen(c.dataset.screen,c.dataset.mark);},onEnterBack:function(){setScreen(c.dataset.screen,c.dataset.mark);}}); });
 if(!SAG.reduce){ gsap.set(stMk,{scale:0}); gsap.to(stMk,{scale:1,duration:.45,ease:'back.out(2.2)',scrollTrigger:{trigger:'#chapters',start:'top 60%',once:true}}); }

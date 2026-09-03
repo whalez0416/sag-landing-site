@@ -89,6 +89,16 @@ h2{margin:0;font-size:clamp(32px,3.9vw,56px);line-height:1.15;font-weight:500;le
 .dform{margin-top:34px}
 footer{position:relative;z-index:2;padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim);background:var(--bg)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+#answer{transition:background-color .7s ease,color .7s ease}.nav{transition:background-color .5s ease,color .5s ease}
+#answer.light{background:#f4f3f7;color:#17171c}
+#answer.light h2{color:#17171c}
+#answer.light .chat{background:#fff;box-shadow:0 24px 60px rgba(20,20,40,.10)}
+#answer.light .chat .lab{color:#8a8a98}
+#answer.light .chat .u{background:#ececf2;color:#17171c}
+#answer.light .chat .a{background:#f6f6fa;border-color:rgba(0,0,0,.08);color:#33333c}
+body.navlight .nav{background:rgba(244,243,247,.72);border-bottom-color:rgba(0,0,0,.08)}
+body.navlight .nav .brand,body.navlight .nav .links a{color:#17171c}
+body.navlight .nav .brand span{color:#8a8a98}
 </style>
 </head>
 <body>
@@ -191,6 +201,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 <script>
 (function(){
 SAG.init();
+ScrollTrigger.create({trigger:'#answer',start:'top 62%',end:'bottom 45%',onToggle:function(s){document.getElementById('answer').classList.toggle('light',s.isActive);document.body.classList.toggle('navlight',s.isActive);}});
 var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
