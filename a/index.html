@@ -59,7 +59,10 @@ h2{margin:0;font-size:clamp(40px,4.2vw,60px);line-height:1.15;font-weight:300;le
 @media (max-width:900px){.three{grid-template-columns:1fr}}
 /* 같은 질문 */
 .band{height:560px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-top:1px solid var(--line)}
-.band .line{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,rgba(255,90,60,0),#ff8a5b 50%,rgba(255,90,60,0));box-shadow:0 0 24px 6px rgba(255,90,60,.35)}
+.band .line{position:absolute;left:0;right:0;top:50%;height:2px;overflow:hidden;background:linear-gradient(90deg,rgba(255,90,60,0),rgba(255,138,91,.28) 50%,rgba(255,90,60,0));box-shadow:0 0 24px 6px rgba(255,90,60,.22)}
+.band .line::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,transparent,#ffd8c4,#ff8a5b,transparent);animation:bandsweep 5s linear infinite}
+@keyframes bandsweep{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+@media (prefers-reduced-motion:reduce){.band .line::after{animation:none;left:30%}}
 .band .glow{position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 50%,rgba(255,90,60,.12),rgba(255,90,60,0) 70%)}
 .band .q{position:relative;font-size:clamp(30px,4.6vw,64px);font-weight:300;letter-spacing:-.02em}
 .band .k{position:relative;font-size:14px;color:var(--mute);margin-bottom:22px}
@@ -157,6 +160,8 @@ body.light .road .dot{box-shadow:0 0 0 7px #f4f3f7}
 .prow .pm b{font-size:38px;font-weight:800;color:transparent;background:linear-gradient(90deg,#ff5a3c,#ff9a6b);-webkit-background-clip:text;background-clip:text;margin-right:6px;letter-spacing:-.02em}
 .prow .pd{font-size:15px;color:var(--mute)}
 @media (max-width:760px){.prow{grid-template-columns:1fr;gap:8px}}
+
+body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1px solid rgba(0,0,0,.1)}
 </style>
 </head>
 <body>
@@ -217,9 +222,10 @@ body.light .road .dot{box-shadow:0 0 0 7px #f4f3f7}
 <section class="sec" id="case"><div class="wrap two" style="align-items:center">
   <div>
     <h2 data-split>AI에게 선택되려면,<br>넘어야 할 기준이 있습니다</h2>
-    <p class="lede" data-reveal style="margin-top:24px">AI와 검색엔진은 병원을 점수로 비교합니다. 대부분의 병원 홈페이지는 이 기준에 못 미칩니다. 아래는 저희가 관리한 병원이 같은 기준을 넘긴 결과입니다.</p>
+    <p class="lede" data-reveal style="margin-top:24px">AI와 검색엔진은 병원을 점수로 비교합니다. 구글의 통과 기준은 화면 밀림(CLS) 0.1 이하, 로딩 2.5초 이내, 최적화 점수 90점 이상입니다. 대부분의 병원 홈페이지는 이 기준에 못 미칩니다.</p>
+    <div data-reveal style="margin-top:30px;margin-bottom:-6px;font-size:14px;font-weight:700;color:var(--acc2);letter-spacing:.02em">↓ 그 기준을 넘어선, 저희가 관리한 병원의 결과</div>
     <div class="big" style="margin-top:34px" data-reveal><div><div class="n cnt" data-to="100">0</div><small>검색엔진 최적화 · 85에서</small></div><div><div class="n cnt" data-to="100">0</div><small>접근성 · 82에서</small></div><div><div class="n cnt" data-to="49" data-suf="배">0</div><small>AI가 읽어간 횟수 · 지식 문서 두 달</small></div><div><div class="n cnt" data-to="16" data-suf="배">0</div><small>AI 답변 거쳐 온 방문 · 주 3→49명</small></div></div>
-    <p class="lede" style="margin-top:34px;max-width:44ch" data-reveal>서울 외과 전문병원 홈페이지, 구글 PageSpeed Insights 동일 조건. 디자인 변경 없음. 지식 문서는 병원 서버 기록.</p>
+    <p class="lede" style="margin-top:34px;max-width:46ch" data-reveal>아래는 그 기준을 넘어선 실제 결과입니다. 서울 외과 전문병원 홈페이지, 구글 PageSpeed Insights 동일 조건, 디자인 변경 없음. 지식 문서는 병원 서버 기록.</p>
   </div>
   <div class="tbl" data-stagger>
     <div><span>성능 점수</span><span><span class="old">12점</span>60점</span></div>
@@ -277,7 +283,7 @@ body.light .road .dot{box-shadow:0 0 0 7px #f4f3f7}
 </div></section>
 
 <section class="diag" id="diag"><div class="wrap grid">
-  <div><h2 data-split>지금 귀 병원은,<br>AI 답변에 있습니까?</h2><p class="lede" style="margin-top:28px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과를 한 장 리포트로 보내드립니다.</p></div>
+  <div><h2 data-split>지금 우리 병원은,<br>AI 답변에 있습니까?</h2><p class="lede" style="margin-top:28px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과를 한 장 리포트로 보내드립니다.</p></div>
   <form class="dform" id="dform" data-reveal>
     <label>병원명<input name="name" required placeholder="OOO 병원"></label>
     <label>지역<input name="area" required placeholder="서울 강북구"></label>
