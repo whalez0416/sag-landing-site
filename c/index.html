@@ -16,7 +16,8 @@ body{background:var(--bg);color:var(--fg);overflow-x:hidden}
 .orbit{position:fixed;left:50%;top:50%;width:0;height:0;z-index:1;pointer-events:none;opacity:0}
 .orbit .d{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 12px rgba(255,138,91,.9)}
 .orbit .d.on{width:11px;height:11px;left:-5px;top:-5px;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.95)}
-.orbit .l{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:600;color:#f2eef8;white-space:nowrap;padding:6px 13px;border-radius:999px;background:rgba(17,12,24,.72);border:1px solid rgba(255,255,255,.18);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.orbit .l{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:clamp(26px,3.2vw,44px);font-weight:700;color:#f2eef8;white-space:nowrap;padding:12px 26px;border-radius:999px;background:rgba(17,12,24,.72);border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+@media(max-width:900px){.orbit .l{font-size:22px;padding:8px 16px}}
 main{position:relative;z-index:2}
 .nav{position:fixed;top:0;left:0;right:0;height:60px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:14px;backdrop-filter:blur(14px);background:rgba(11,8,16,.5);border-bottom:1px solid rgba(255,255,255,.06)}
 .nav .brand{font-weight:600;letter-spacing:.02em;text-decoration:none}.nav .brand span{font-weight:400;color:var(--dim);margin-left:10px}
@@ -90,7 +91,7 @@ h2{margin:0;font-size:clamp(32px,3.9vw,56px);line-height:1.15;font-weight:500;le
 footer{position:relative;z-index:2;padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim);background:var(--bg)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 /* ===== two-act theme: 문제(dark) -> 해답(light), latched from #answer ===== */
-#orb{transition:opacity .7s ease}
+#orb{transition:opacity 1.3s ease}
 .sec,.os,footer,.chat,.chat .a,.chat .u,.road div,.pgrid div,.pc,.dform input,.nav{transition:background-color .6s ease,color .6s ease,border-color .6s ease,box-shadow .6s ease}
 body.light{background:#f4f3f7;color:#17171c}
 body.light #orb{opacity:0}
@@ -144,6 +145,7 @@ body.light .nav .cta{border-color:rgba(0,0,0,.5);color:#17171c}
 .pgrid .last{background:#241420}.pgrid .last b{color:var(--acc2)}
 #about .nums .n,#about2 .nums .n{font-size:clamp(56px,7vw,90px)}
 #about .nums,#about2 .nums{gap:48px}
+.os.chapstart{border-top:1px solid rgba(255,255,255,.14)}
 /* legibility over the orb (dark act only) */
 .os .txt{text-shadow:0 1px 24px rgba(0,0,0,.5)}
 body.light .os .txt{text-shadow:none}
@@ -166,6 +168,7 @@ body.light .sec,body.light #diag{border-top-color:transparent}
 .cmtrack span{font-size:clamp(26px,3.4vw,46px);font-weight:800;letter-spacing:-.02em;color:#f2eef8}
 .cmtrack span::after{content:"·";margin:0 26px;color:var(--acc);opacity:.7;font-weight:700;vertical-align:middle}
 @keyframes cmarq{to{transform:translateX(-50%)}}
+body.light .cmtrack span{color:#17171c}body.light .cmtrack span::after{color:var(--acc)}
 @media (prefers-reduced-motion:reduce){.cmtrack{animation:none}}
 /* pricing per-card CTA */
 .price .pcbtn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;height:50px;border-radius:12px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid var(--acc);color:var(--acc2);background:transparent;transition:background .25s ease,color .25s ease}
@@ -193,9 +196,9 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
   <p class="lede" data-reveal>검색, AI, 홈페이지, 기사, 영상, 리뷰. 일곱 화면을 오가며 같은 병원이 같은 말을 하는지 확인합니다. AI도 같은 방식으로 병원을 대조합니다.</p>
 </div></div></section>
 
-<section class="os l" data-orb="-0.36,0,0.26,0,1"><div class="wrap"><div class="txt">
+<section class="os l chapstart" data-orb="-0.36,0,0.26,0,1"><div class="wrap"><div class="txt">
   <div class="eyebrow" data-reveal>대부분의 병원</div>
-  <h2 data-split>AI는 아직<br>당신의 병원을 모릅니다</h2>
+  <h2 data-split>AI는 아직<br>우리 병원을 모릅니다</h2>
   <p class="lede" data-reveal>여섯 면 중 켜진 면이 없기 때문입니다. 디자인이 좋아도, 기사가 한 번 나가도, 영상이 많아도 AI에게는 보이지 않습니다. AI가 읽는 건 골격, 서로 인용된 근거, 글자로 남은 자막과 답글입니다.</p>
 </div></div></section>
 
@@ -227,7 +230,7 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
   <div class="cmarquee" data-reveal><div class="cmtrack"><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span></div></div>
 </div></section>
 
-<section class="sec" id="answer" data-orb="0.5,0.3,0.14,6,0.35"><div class="wrap">
+<section class="sec" id="answer" data-orb="0,1.2,0.22,6,0"><div class="wrap">
   <h2 data-split>S.A.G 솔루션 도입 6개월 뒤,<br>AI의 답이 이렇게 달라집니다</h2>
   <p class="lede" data-reveal style="margin:-24px 0 40px;max-width:none">검색 결과, AI 요약, AI 답변, 리뷰까지 — 환자가 보는 여러 화면에서 답이 함께 달라집니다.</p>
   <div class="chats" data-stagger>
@@ -300,14 +303,14 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
 <script>
 (function(){
 SAG.init();
-ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');st.paused=true;},onLeaveBack:function(){document.body.classList.remove('light');st.paused=false;}});
+ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');clearTimeout(st._pt);st._pt=setTimeout(function(){st.paused=true;},1600);},onLeaveBack:function(){document.body.classList.remove('light');clearTimeout(st._pt);st.paused=false;}});
 var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
 /* orbit dots */
 var orbit=document.getElementById('orbit'); var labels=['검색','AI','홈페이지','기사','영상','리뷰','지도'];
 for(var j=0;j<7;j++){ var d=document.createElement('div'); d.className='d'+(j===1?' on':''); d.innerHTML='<span class="l">'+labels[j]+'</span>'; orbit.appendChild(d); }
-var ang=0; function orbitLoop(){ if(st.paused){requestAnimationFrame(orbitLoop);return;} ang+=0.006; var h=innerHeight, cx=innerWidth/2+st.x*h, cy=h/2-st.y*h, R=st.r*h*1.2; orbit.style.left=cx+'px'; orbit.style.top=cy+'px';
+var ang=0; function orbitLoop(){ if(st.paused){requestAnimationFrame(orbitLoop);return;} ang+=0.006; var h=innerHeight, cx=innerWidth/2+st.x*h, cy=h/2-st.y*h, R=st.r*h*1.6; orbit.style.left=cx+'px'; orbit.style.top=cy+'px';
   orbit.querySelectorAll('.d').forEach(function(el,j){ var a=ang+j*Math.PI*2/7; el.style.transform='translate('+(Math.cos(a)*R)+'px,'+(Math.sin(a)*R*.6)+'px)'; el.style.opacity=.4+.6*(Math.sin(a)+1)/2; }); requestAnimationFrame(orbitLoop); } orbitLoop();
 /* orb state per section */
 function apply(sec,immediate){ var v=sec.dataset.orb.split(',').map(Number); var x=v[0], y=v[1], r=v[2]; if(mobile){ x=0; y=0.18; r=Math.min(r,.2); }
