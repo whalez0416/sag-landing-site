@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S.A.G 최적화 · 한 명의 환자, 일곱 화면 | NC 컨설팅</title>
+<meta name="description" content="환자 한 명이 병원에 닿기까지 일곱 화면. 그 모든 화면에서 같은 이름이 나오게 하는 S.A.G 최적화. 무료 AI 추천 진단.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.14/swiper-bundle.min.css">
+<link rel="stylesheet" href="../shared/sag.css">
+<style>
+:root{--bg:#191f28;--bg2:#202834;--bg3:#141a22;--fg:#fff;--mute:#b0b8c1;--dim:#8b95a1;--acc:#ff5a3c;--acc2:#ff7a5c}
+body{background:var(--bg);color:var(--fg);overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;height:60px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:14px;backdrop-filter:blur(14px);background:rgba(25,31,40,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav .brand{font-weight:700;text-decoration:none}.nav .brand span{font-weight:400;color:var(--dim);margin-left:10px}
+.nav .links{display:flex;gap:26px}.nav .links a{text-decoration:none;color:var(--mute)}.nav .links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:14px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(255,90,60,.35)}
+.nav .btn{height:40px;padding:0 18px;font-size:14px;border-radius:10px}
+@media (max-width:900px){.nav{padding:0 20px}.nav .links{display:none}}
+h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.2;font-weight:700;letter-spacing:-.02em}
+.eyebrow{font-size:15px;font-weight:500;color:var(--dim);margin-bottom:16px}
+.lede{margin:0;font-size:17px;line-height:1.7;color:var(--mute);max-width:46ch}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.center .lede{margin-left:auto;margin-right:auto}
+/* hero */
+.hero{position:relative;min-height:100dvh;overflow:hidden;padding:130px 0 0;text-align:center}
+.hero .floor{position:absolute;left:0;right:0;bottom:0;height:420px;background:radial-gradient(60% 100% at 50% 100%,rgba(255,90,60,.14),rgba(255,90,60,0) 70%)}
+.hero h1{margin:0 auto;font-size:clamp(34px,5.5vw,72px);line-height:1.18;font-weight:700;letter-spacing:-.02em;max-width:18ch}
+.hero .lede{margin:22px auto 0;font-size:19px;color:#d5dbe2}
+.hero .btn{margin-top:28px}
+.arcwrap{position:relative;width:100%;overflow:visible;margin-top:30px}
+.arc{position:relative;width:1440px;height:600px;margin:0 auto;perspective:1800px;perspective-origin:50% 40%;transform-origin:50% 0}
+.arc .slot{position:absolute;left:0;top:0;width:100%;height:100%;transform-style:preserve-3d}
+.arc .ph{position:absolute;left:50%;top:0;margin-left:-150px;transform-origin:50% 0}
+.arc .lab{position:absolute;left:50%;top:520px;transform:translateX(-50%);font-size:13px;color:var(--dim);white-space:nowrap;text-align:center}
+.arc .lab b{display:block;color:#fff;font-weight:500;font-size:12px;letter-spacing:.06em;margin-bottom:4px}
+/* journey */
+.sec{padding:130px 0}
+@media (max-width:900px){.sec{padding:90px 0}}
+.swiper{overflow:visible;width:100%;height:560px;margin-top:50px}
+.swiper-slide{width:250px;height:100%;display:flex;flex-direction:column;align-items:center;gap:16px}
+.swiper-slide .ph{transform:scale(.8);transform-origin:50% 0;margin-bottom:-120px}
+.swiper-slide:not(.swiper-slide-active) .ph .s{filter:brightness(.45) saturate(.6)}
+.swiper-slide .lab{font-size:14px;color:var(--dim);font-weight:500;transition:color .4s}
+.swiper-slide-active .lab{color:#fff}
+.swiper-slide-active .ph{border-color:var(--acc);box-shadow:0 0 0 2px rgba(255,90,60,.6),0 0 60px rgba(255,90,60,.55),0 40px 80px rgba(0,0,0,.55)}
+@media (max-width:640px){.swiper{height:460px}.swiper-slide{width:190px}.swiper-slide .ph{transform:scale(.62);margin-bottom:-230px}}
+/* chapters: sticky phone */
+.chapters{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.chapters .txt{display:flex;flex-direction:column}
+.chapters .ch1{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.chapters .ch1 h3{margin:0 0 18px;font-size:clamp(28px,3vw,40px);line-height:1.25;font-weight:700}
+.chapters .ch1 p{margin:0;font-size:16px;line-height:1.75;color:var(--mute)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;align-items:center;font-size:13px;color:var(--dim)}
+.chips span{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:rgba(255,90,60,.16);color:#ff9a7c;font-weight:500}
+.chapters .stick{position:sticky;top:12vh;height:76vh;display:flex;align-items:center;justify-content:center}
+.chapters .stick .ph{transform:scale(.95)}
+.chapters .stick .ph .s .in{transition:opacity .35s}
+.chapters .stick .num{position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:13px;letter-spacing:.1em;color:var(--dim)}
+@media (max-width:900px){.chapters{grid-template-columns:1fr;gap:0}.chapters .stick{position:sticky;top:60px;height:auto;padding:14px 0;background:linear-gradient(180deg,var(--bg) 80%,rgba(25,31,40,0));z-index:2}.chapters .stick .ph{transform:scale(.55);transform-origin:50% 0;margin-bottom:-270px}.chapters .ch1{min-height:0;padding:40px 0 80px}.chapters .stick .num{display:none}}
+/* flip */
+.flip{background:var(--bg3);padding:130px 0 140px;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;width:100%;margin-top:56px}
+@media (max-width:900px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:var(--bg2);border-radius:24px;padding:40px 28px;text-align:left}
+.stat .n{font-size:64px;font-weight:700;letter-spacing:-.03em;color:var(--acc2);line-height:1.1}
+.stat .l{font-size:15px;color:#d5dbe2;margin-top:8px}.stat .s{font-size:13px;color:var(--dim);margin-top:4px}
+/* six */
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:64px;width:100%}
+@media (max-width:900px){.six{grid-template-columns:1fr 1fr}}@media (max-width:560px){.six{grid-template-columns:1fr}}
+.card6{background:var(--bg2);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:16px;min-height:240px;text-align:left;transition:transform .4s,box-shadow .4s}
+.card6:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.card6 b{font-size:34px;font-weight:700}.card6 p{margin:0;font-size:15px;line-height:1.7;color:#d5dbe2}.card6 .tool{margin-top:auto;font-size:13px;color:var(--dim)}
+/* road */
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;width:100%;margin-top:56px}
+@media (max-width:900px){.road{grid-template-columns:1fr 1fr}}@media (max-width:560px){.road{grid-template-columns:1fr}}
+.road div{border-radius:24px;background:var(--bg2);padding:32px 28px;text-align:left}
+.road div b{display:block;font-size:22px;font-weight:700;margin-bottom:10px}.road div p{margin:0;font-size:14px;line-height:1.7;color:var(--mute)}
+.road .last{background:#2a1f22}.road .last b{color:var(--acc2)}
+/* price */
+.price{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;width:100%;align-items:center;margin-top:56px}
+@media (max-width:900px){.price{grid-template-columns:1fr}}
+.pc{background:var(--bg2);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:24px;text-align:left;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.pc:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.pc .nm{font-size:16px;font-weight:700}.pc .pr{font-size:40px;font-weight:700;letter-spacing:-.02em}
+.pc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--mute)}
+.pc.std{background:#fff;color:var(--bg);padding:48px 40px}.pc.std .nm{color:var(--acc)}.pc.std .pr{font-size:44px}.pc.std ul{color:#4e5968}
+/* diag */
+.diag{position:relative;padding:130px 0 140px;text-align:center;overflow:hidden}
+.diag .glow{position:absolute;inset:0;background:radial-gradient(50% 50% at 50% 50%,rgba(255,90,60,.16),rgba(255,90,60,0) 70%)}
+.diag .wrap{position:relative}
+.dform{margin:40px auto 0;text-align:left}
+.dform input{background:rgba(255,255,255,.06)}
+.dform button{border-radius:14px}
+footer{padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="brand" href="#top">S.A.G<span>NC 컨설팅</span></a><div class="links"><a href="#journey">환자의 여정</a><a href="#six">여섯 조건</a><a href="#flip">사례</a><a href="#price">비용</a></div><a class="btn" href="#diag">무료 AI 추천 진단</a></nav>
+
+<section class="hero" id="top">
+  <div class="floor"></div>
+  <div class="wrap">
+    <h1 data-split>검색되는 병원에서,<br>AI가 추천하는 병원으로</h1>
+    <p class="lede" data-reveal data-delay=".4">환자 한 명이 병원에 닿기까지, 일곱 화면.</p>
+    <a class="btn" href="#diag" data-reveal data-delay=".6">무료 AI 추천 진단</a>
+  </div>
+  <div class="arcwrap" id="arcwrap"><div class="arc" id="arc"></div></div>
+</section>
+
+<section class="sec" id="journey"><div class="wrap center">
+  <div class="eyebrow" data-reveal>환자의 여정</div>
+  <h2 data-split>목에 혹이 만져진<br>김OO 씨의 일곱 화면</h2>
+  <p class="lede" style="margin-top:24px" data-reveal>환자는 한 매체의 말을 믿지 않습니다. 검색, AI, 홈페이지, 기사, 영상, 리뷰를 오가며 같은 병원이 같은 말을 하는지 확인합니다. 김OO 씨를 따라가 봅니다.</p>
+  <div class="swiper" id="sw"><div class="swiper-wrapper" id="swWrap"></div></div>
+</div></section>
+
+<section class="sec" id="chapters" style="padding-top:40px"><div class="wrap chapters">
+  <div class="txt" id="chTxt">
+    <div class="ch1" data-screen="ai" data-mark="x" data-chips="사실,권위"><div class="eyebrow">두 번째 화면</div><h3 data-split>AI에게 묻습니다.<br>여기서 이름이 없으면 다음은 없습니다</h3><p data-reveal>"강북에서 갑상선 잘 보는 병원?" 검색창 대신 챗GPT에 묻습니다. AI는 여러 출처에서 확인된 병원만 답에 올립니다. 이 답에 없는 병원은 다음 화면으로 갈 수 없습니다.</p><div class="chips" data-reveal>여기서 필요한 조건<span>사실</span><span>권위</span></div></div>
+    <div class="ch1" data-screen="site" data-mark="ok" data-chips="읽힘"><div class="eyebrow">세 번째 화면</div><h3 data-split>홈페이지를 열어<br>정말 전문인지 봅니다</h3><p data-reveal>답에 나온 병원의 홈페이지를 엽니다. 느리거나 화면이 밀리거나 글자가 이미지 속에 있으면 환자도, AI도 읽지 못합니다.</p><div class="chips" data-reveal>여기서 필요한 조건<span>읽힘</span></div></div>
+    <div class="ch1" data-screen="news" data-mark="ok" data-chips="전문가,권위"><div class="eyebrow">네 번째 화면</div><h3 data-split>다른 데서도<br>같은 말을 하는지 봅니다</h3><p data-reveal>기사와 문서로 재확인합니다. 원장님 이름으로 실린 칼럼과 매체 기사가 홈페이지와 같은 말을 하면 신뢰가 굳어집니다.</p><div class="chips" data-reveal>여기서 필요한 조건<span>전문가</span><span>권위</span></div></div>
+    <div class="ch1" data-screen="video" data-mark="ok" data-chips="현장,평판"><div class="eyebrow">다섯 · 여섯 번째 화면</div><h3 data-split>영상을 보고,<br>다녀온 사람의 말을 듣습니다</h3><p data-reveal>유튜브에서 원장님 설명을 듣고, 구글 리뷰에서 실제 환자의 평가와 병원의 답글을 확인합니다. AI는 영상을 보지 못하고 자막만 읽습니다.</p><div class="chips" data-reveal>여기서 필요한 조건<span>현장</span><span>평판</span></div></div>
+    <div class="ch1" data-screen="map" data-mark="ok" data-chips="읽힘,평판"><div class="eyebrow">일곱 번째 화면</div><h3 data-split>한 곳도 어긋나지 않은<br>병원에 도착합니다</h3><p data-reveal>위치를 확인하고 예약합니다. 일곱 화면을 모두 통과한 병원이 선택됩니다. 한 곳이라도 비거나 어긋났다면 이 화면은 오지 않았습니다.</p><div class="chips" data-reveal>여기서 필요한 조건<span>읽힘</span><span>평판</span></div></div>
+  </div>
+  <div class="stick"><div class="num" id="chNum">02 · AI에게 질문</div><div id="stickPh"></div></div>
+</div></section>
+
+<section class="flip" id="flip"><div class="wrap center">
+  <div class="eyebrow" data-reveal>뒤집어 보기</div>
+  <h2 data-split>귀 병원은 일곱 화면 중<br>몇 곳에 있습니까</h2>
+  <p class="lede" style="margin-top:24px" data-reveal>저희가 관리하는 병원들이 그 화면들에서 얻은 실측입니다. 서울 외과 전문병원 홈페이지와 지식 문서 운영 병원의 서버 기록.</p>
+  <div class="stats" data-stagger>
+    <div class="stat"><div class="n cnt" data-to="100">0</div><div class="l">검색엔진 최적화</div><div class="s">85점에서</div></div>
+    <div class="stat"><div class="n cnt" data-to="100">0</div><div class="l">접근성</div><div class="s">82점에서</div></div>
+    <div class="stat"><div class="n cnt" data-to="49" data-suf="배">0</div><div class="l">AI가 읽어간 횟수</div><div class="s">지식 문서 두 달</div></div>
+    <div class="stat"><div class="n cnt" data-to="16" data-suf="배">0</div><div class="l">AI 답변 거쳐 온 방문</div><div class="s">주 3명에서 49명</div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="six"><div class="wrap center">
+  <div class="eyebrow" data-reveal>여섯 조건</div>
+  <h2 data-split>일곱 화면을 통과하는<br>여섯 조건</h2>
+  <div class="six" data-stagger>
+    <div class="card6"><b>읽힘</b><p>빠른데도 AI 답변에 없다면, 문제는 속도가 아니라 골격입니다.</p><div class="tool">홈페이지 최적화</div></div>
+    <div class="card6"><b>사실</b><p>홈페이지 글은 광고로, 사전처럼 정리된 글은 사실로 읽힙니다.</p><div class="tool">병원 지식 문서 구축</div></div>
+    <div class="card6"><b>전문가</b><p>환자가 마지막에 검색하는 건 원장님 이름입니다.</p><div class="tool">Medical Insights Korea 정기 칼럼</div></div>
+    <div class="card6"><b>권위</b><p>기사 한 편은 하루 노출, 서로 인용된 기사는 AI 답변에 남습니다.</p><div class="tool">주요 언론 매체 정기 배포</div></div>
+    <div class="card6"><b>현장</b><p>AI는 영상을 보지 못합니다. 자막만 읽습니다.</p><div class="tool">유튜브 자막 최적화</div></div>
+    <div class="card6"><b>평판</b><p>별점보다 구글이 먼저 보는 건 병원이 답했는가입니다.</p><div class="tool">구글 리뷰 관리</div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="road" style="padding-top:0"><div class="wrap center">
+  <h2 data-split>착수 후 6개월</h2>
+  <div class="road" data-stagger>
+    <div><b>착수</b><p>현재 검색, AI 노출 상태 진단. 병원 자료 수령.</p></div>
+    <div><b>1개월</b><p>홈페이지 최적화 완료, 지식 문서 첫 20건, 리뷰 동선 세팅.</p></div>
+    <div><b>3개월</b><p>칼럼과 기사 누적, 지식 문서 60건, 자막 정비.</p></div>
+    <div class="last"><b>6개월</b><p>AI 답변에 병원 등장 여부 검증. 매월 한 장 리포트.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="price" style="padding-top:0"><div class="wrap center">
+  <h2 data-split>여섯 가지를 하나로</h2>
+  <p class="lede" style="margin-top:16px" data-reveal>모든 구성은 최소 6개월 계약 기준. VAT 별도, 초기 세팅비 없음.</p>
+  <div class="price" data-stagger>
+    <div class="pc"><div class="nm">베이직</div><div class="pr">월 300만원</div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 8건</li><li>MIK 칼럼 월 2편</li><li>유튜브 자막 월 4편</li><li>구글 리뷰 관리</li></ul></div>
+    <div class="pc std"><div class="nm">스탠다드 · 추천</div><div class="pr">월 500만원</div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 20건</li><li>MIK 칼럼 월 4편</li><li>주요 매체 기사 월 1건</li><li>유튜브 자막 월 8편</li><li>구글 리뷰 관리</li></ul><a class="btn" href="#diag" style="height:52px">무료 AI 추천 진단</a></div>
+    <div class="pc"><div class="nm">프리미엄</div><div class="pr">월 800만원</div><ul><li>홈페이지 최적화</li><li>병원 지식 문서 월 40건 + 원장 인물 문서</li><li>MIK 칼럼 월 8편</li><li>주요 매체 기사 월 3건</li><li>유튜브 자막 전 영상</li><li>구글 리뷰 관리 + 외국어 응대</li></ul></div>
+  </div>
+</div></section>
+
+<section class="diag" id="diag"><div class="glow"></div><div class="wrap center">
+  <h2 data-split>일곱 화면을<br>대신 걸어드립니다</h2>
+  <p class="lede" style="margin-top:24px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에서 귀 병원으로 같은 길을 걸어본 결과를 한 장 리포트로 보내드립니다.</p>
+  <form class="dform" id="dform" data-reveal>
+    <label>병원명<input name="name" required placeholder="OOO 병원"></label>
+    <label>지역<input name="area" required placeholder="서울 강북구"></label>
+    <label>진료과<input name="dept" required placeholder="외과 · 갑상선"></label>
+    <label>연락처<input name="contact" required placeholder="이메일 또는 전화"></label>
+    <button type="submit">무료 AI 추천 진단 신청</button>
+    <div class="note">신청 후 하루 안에 리포트를 보내드립니다.</div>
+  </form>
+</div></section>
+
+<footer><div class="wrap"><div><b>S.A.G</b> <span style="margin-left:10px">NC 컨설팅</span></div><a href="https://ncconsulting.co.kr" style="text-decoration:none">ncconsulting.co.kr</a><div>© 2026 NC Consulting</div></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.14/swiper-bundle.min.js"></script>
+<script src="../shared/sag.js"></script>
+<script>
+(function(){
+var ST=SAG.STEPS;
+/* hero arc */
+var arc=document.getElementById('arc'), html='';
+ST.forEach(function(st,i){ var k=i-3; var rot=k*-13, tx=k*172, tz=-Math.abs(k)*120-k*k*35, ty=Math.abs(k)*6, z=10-Math.abs(k);
+  html+='<div class="slot" style="z-index:'+z+'"><div class="ph'+(i===3?' lit':'')+'" style="transform:translate3d('+tx+'px,'+ty+'px,'+tz+'px) rotateY('+rot+'deg) scale(.8)"><div class="isl"></div><div class="s"><div class="in">'+SAG.S[st[2]]+'</div></div><div class="gl"></div></div><div class="lab" style="margin-left:'+(tx*0.9)+'px"><b>'+st[0]+'</b>'+st[1]+'</div></div>'; });
+arc.innerHTML=html;
+var aw=document.getElementById('arcwrap');
+function fitArc(){ var s=Math.min(1,aw.clientWidth/1440); arc.style.transform='scale('+s+')'; aw.style.height=(600*s)+'px'; } fitArc(); addEventListener('resize',fitArc);
+/* journey swiper */
+var wrap=document.getElementById('swWrap');
+wrap.innerHTML=ST.map(function(st){ return '<div class="swiper-slide">'+SAG.phone(st[2])+'<div class="lab">'+st[1]+'</div></div>'; }).join('');
+/* sticky phone */
+var stick=document.getElementById('stickPh'); stick.innerHTML=SAG.phone('ai','',null,'x'); var stIn=stick.querySelector('.in'), stMk=stick.querySelector('.mk'), num=document.getElementById('chNum');
+var names={ai:'02 · AI에게 질문',site:'03 · 홈페이지 확인',news:'04 · 기사 · 문서로 재확인',video:'05 · 유튜브 시청',map:'07 · 위치 · 예약'};
+function setScreen(key,mark){ if(stIn.dataset.k===key) return; stIn.dataset.k=key;
+  gsap.to(stIn,{opacity:0,duration:.2,onComplete:function(){ stIn.innerHTML=SAG.S[key]; gsap.to(stIn,{opacity:1,duration:.3}); }});
+  num.textContent=names[key]; stMk.className='mk '+mark; stMk.textContent=mark==='x'?'✕':'✓';
+  gsap.fromTo(stMk,{scale:0},{scale:1,duration:.45,ease:'back.out(2.2)',delay:.35});
+  if(mark==='x') gsap.fromTo(stick.querySelector('.ph'),{x:-6},{x:0,duration:.08,repeat:5,yoyo:true,delay:.5}); }
+SAG.init();
+if(SAG.reduce){ gsap.set(stMk,{scale:1}); }
+document.querySelectorAll('#chTxt .ch1').forEach(function(c){ ScrollTrigger.create({trigger:c,start:'top 55%',end:'bottom 55%',onEnter:function(){setScreen(c.dataset.screen,c.dataset.mark);},onEnterBack:function(){setScreen(c.dataset.screen,c.dataset.mark);}}); });
+if(!SAG.reduce){ gsap.set(stMk,{scale:0}); gsap.to(stMk,{scale:1,duration:.45,ease:'back.out(2.2)',scrollTrigger:{trigger:'#chapters',start:'top 60%',once:true}}); }
+/* hero phones rise */
+if(!SAG.reduce){ gsap.from('#arc .slot',{y:80,opacity:0,duration:.9,stagger:{each:.08,from:'center'},ease:'power3.out',delay:.5}); }
+var sw=new Swiper('#sw',{effect:'coverflow',centeredSlides:true,slidesPerView:'auto',spaceBetween:0,initialSlide:1,speed:700,grabCursor:true,coverflowEffect:{rotate:28,stretch:0,depth:180,modifier:1,slideShadows:false},autoplay:SAG.reduce?false:{delay:2200,disableOnInteraction:false}});
+sw.on('reachEnd',function(){ setTimeout(function(){ sw.slideTo(0); },1800); });
+})();
+</script>
+</body>
+</html>
