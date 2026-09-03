@@ -141,6 +141,15 @@ body.light .pc:hover{box-shadow:inset 0 0 0 2px var(--acc),0 26px 55px rgba(20,2
 body.light .dform input{background:rgba(0,0,0,.04);color:#17171c}
 /* dark act variety */
 #three,#six{background:#0e0e15}
+/* light-act section separation */
+body.light #answer{background:#efeef4}
+body.light #road{background:#fff}
+body.light #about{background:#efeef4}
+body.light #partners{background:#fff}
+body.light #price{background:#efeef4}
+body.light .diag{background:#fff}
+body.light .sec,body.light .diag{border-top:1px solid rgba(0,0,0,.09)}
+.cnt{font-variant-numeric:tabular-nums}
 /* hero seam */
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(180deg,transparent,rgba(255,90,60,.05));pointer-events:none;z-index:0}
 /* partners */
@@ -269,7 +278,7 @@ body.light .dform input{background:rgba(0,0,0,.04);color:#17171c}
   </div>
 </div></section>
 
-<section class="diag" id="diag"><div class="line"></div><div class="wrap grid">
+<section class="diag" id="diag"><div class="wrap grid">
   <div><h2 data-split>귀 병원을<br>지금 대조해 드립니다</h2><p class="lede" style="margin-top:28px" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과를 한 장 리포트로 보내드립니다.</p></div>
   <form class="dform" id="dform" data-reveal>
     <label>병원명<input name="name" required placeholder="OOO 병원"></label>

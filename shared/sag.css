@@ -102,3 +102,14 @@ a{color:inherit}
 .dform button:hover{background:#ff7052}
 .dform .note{grid-column:1/-1;font-size:12px;opacity:.6}
 @media (max-width:640px){.dform{grid-template-columns:1fr}}
+
+
+/* floating quick buttons (진단 CTA + 맨 위로) */
+.fbtns{position:fixed;right:20px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:12px;align-items:flex-end;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.fbtns.show{opacity:1;transform:none;pointer-events:auto}
+.fb{cursor:pointer;border:none;font-family:inherit}
+.fb-cta{display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:999px;background:#ff5a3c;color:#fff;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.fb-cta:hover{background:#ff7052}
+.fb-top{align-self:flex-end;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:20px;line-height:1;border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+body.light .fb-top{background:rgba(0,0,0,.06);color:#17171c;border-color:rgba(0,0,0,.14)}
+@media (max-width:640px){.fb-cta{height:48px;padding:0 20px;font-size:14px}}

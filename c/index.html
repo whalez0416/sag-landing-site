@@ -146,6 +146,21 @@ body.light .nav .cta{border-color:rgba(0,0,0,.5);color:#17171c}
 /* legibility over the orb (dark act only) */
 .os .txt{text-shadow:0 1px 24px rgba(0,0,0,.5)}
 body.light .os .txt{text-shadow:none}
+/* ===== CLS fix: reserve count-up width so 0->N doesn't reflow the flex row ===== */
+.nums .n{display:inline-block;font-variant-numeric:tabular-nums}
+.nums div{min-width:140px}
+#about .nums div{min-width:210px}
+/* ===== pricing hover: emphasis follows mouse ===== */
+.price .pc{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease,filter .35s ease}
+.price .pc:hover{transform:translateY(-8px)}
+.pc:not(.std):hover{border-color:rgba(255,90,60,.55);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+body.light .pc:not(.std):hover{box-shadow:0 22px 50px rgba(20,20,40,.12)}
+.price:hover .pc.std:not(:hover){filter:saturate(.55) brightness(.92)}
+/* ===== light-act section separation: alternating tint + dividers ===== */
+body.light #answer,body.light #about,body.light #price{background:#f5f4f8}
+body.light #road,body.light #about2{background:#eceaf2}
+body.light #diag{background:#eceaf2}
+body.light .sec,body.light #diag{border-top:1px solid rgba(0,0,0,.08)}
 </style>
 </head>
 <body>

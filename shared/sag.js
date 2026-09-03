@@ -27,6 +27,7 @@ function init(){
   if(!reduce && window.Lenis){ lenis=new Lenis({lerp:.09,smoothWheel:true}); lenis.on('scroll',ScrollTrigger.update); gsap.ticker.add(function(t){lenis.raf(t*1000);}); gsap.ticker.lagSmoothing(0); }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ var id=a.getAttribute('href'); if(id.length<2) return; var t=document.querySelector(id); if(!t) return; e.preventDefault(); if(lenis) lenis.scrollTo(t,{offset:-40}); else t.scrollIntoView({behavior:'smooth'}); }); });
   fitWinboxes(); addEventListener('resize',fitWinboxes);
+  floatBtns();
   if(reduce){ document.querySelectorAll('[data-split]').forEach(split); return; }
   document.querySelectorAll('[data-split]').forEach(function(el){ var chs=split(el); gsap.to(chs,{opacity:1,y:0,duration:.8,stagger:.022,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%',once:true}}); });
   document.querySelectorAll('[data-reveal]').forEach(function(el){ gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',delay:+(el.dataset.delay||0),scrollTrigger:{trigger:el,start:'top 88%',once:true}}); });
@@ -44,6 +45,15 @@ function form(){ var f=document.getElementById('dform'); if(!f) return;
   f.addEventListener('submit',function(e){ e.preventDefault(); var d=new FormData(f); var body=['병원명: '+d.get('name'),'지역: '+d.get('area'),'진료과: '+d.get('dept'),'연락처: '+d.get('contact'),'','무료 AI 추천 진단을 신청합니다.'].join('\n');
     location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('[무료 AI 추천 진단] '+d.get('name'))+'&body='+encodeURIComponent(body);
     var n=f.querySelector('.note'); if(n) n.textContent='메일 앱이 열립니다. 전송하시면 하루 안에 리포트를 보내드립니다.'; });
+}
+function floatBtns(){ if(document.querySelector('.fbtns')) return;
+  var diag=document.getElementById('diag');
+  var wrap=document.createElement('div'); wrap.className='fbtns';
+  wrap.innerHTML='<a class="fb fb-cta" href="#diag">무료 AI 추천 진단</a><button class="fb fb-top" aria-label="맨 위로">\u2191</button>';
+  document.body.appendChild(wrap);
+  wrap.querySelector('.fb-cta').addEventListener('click',function(e){ if(diag){ e.preventDefault(); if(lenis) lenis.scrollTo(diag,{offset:-40}); else diag.scrollIntoView({behavior:'smooth'}); } });
+  wrap.querySelector('.fb-top').addEventListener('click',function(){ if(lenis) lenis.scrollTo(0); else scrollTo({top:0,behavior:'smooth'}); });
+  function upd(){ wrap.classList.toggle('show',(pageYOffset||document.documentElement.scrollTop)>700); } upd(); addEventListener('scroll',upd,{passive:true});
 }
 /* ---------- orb ---------- */
 var FS=[

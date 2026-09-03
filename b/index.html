@@ -122,6 +122,25 @@ body.light .dform input{background:#fff;border:1px solid rgba(0,0,0,.14);color:#
 body.light .dform input::placeholder{color:#9aa}
 body.light footer{border-top-color:rgba(0,0,0,.1);color:#6a6a76}
 body.light footer span{color:#6a6a76}
+/* light-act boxes fit the light background */
+body.light .stat{background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 12px 30px rgba(20,20,40,.07)}
+body.light .stat .l{color:#17171c}
+body.light .stat .s{color:#8a8a98}
+body.light .card6{background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 12px 30px rgba(20,20,40,.07)}
+body.light .card6 b{color:#17171c}
+body.light .card6 p{color:#5a5a66}
+body.light .card6:hover{box-shadow:0 26px 55px rgba(20,20,40,.14)}
+/* light-act section banding + hairline dividers (반전 이후 구분) */
+body.light #six,body.light #about,body.light #price{background:#ecebf1}
+body.light #flip,body.light #road,body.light #about2,body.light #diag{background:#f4f3f7}
+body.light #six,body.light #road,body.light #about,body.light #about2,body.light #price,body.light #diag{border-top:1px solid rgba(0,0,0,.055)}
+/* pricing emphasis follows the mouse (A와 동일) */
+.pc.std{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,.3)}
+body.light .pc.std{box-shadow:0 24px 55px rgba(20,20,40,.2)}
+body.light .pc:hover{box-shadow:0 26px 60px rgba(20,20,40,.16)}
+.price:hover .pc.std:not(:hover){transform:none!important;box-shadow:none!important}
+/* CLS: keep count-up width stable */
+.cnt{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
