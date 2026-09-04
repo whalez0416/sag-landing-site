@@ -1,7 +1,8 @@
 /* SAG shared runtime: screens, phone/window mocks, scroll + reveal, countup, typewriter, orb shader, form */
 window.SAG=(function(){
 'use strict';
-var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',formEndpoint:''}; /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
+var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',formEndpoint:'',formMap:null};
+/* formEndpoint=구글폼 formResponse URL, formMap={폼필드명:'entry.숫자'} 설정 시 신청이 구글폼→시트에 저장됨. 미설정 시 mailto 폴백 */ /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var S={};
 S.search='<div class="sb">9:41<i></i></div><div class="sc"><div class="srch">강북구 갑상선 수술 잘하는 곳</div><div class="tabs"><b>통합</b><span>지도</span><span>블로그</span><span>뉴스</span></div><div class="res hi"><div class="t"><span class="pill1">1위</span>&nbsp; OOO 병원</div><div class="u">갑상선 전문 외과 · 강북구</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">△△ 내과</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">□□ 병원</div><div class="ln m"></div><div class="ln s"></div></div></div>';
@@ -44,15 +45,15 @@ function type(el,text,opts){ opts=opts||{}; var i=0, done=false;
 function form(){ var f=document.getElementById('dform'); if(!f) return;
   f.addEventListener('submit',function(e){ e.preventDefault();
     var d=new FormData(f), n=f.querySelector('.note'), b=f.querySelector('button[type=submit]'), ob=b?b.textContent:'';
-    if(CONFIG.formEndpoint){
-      var p=new URLSearchParams(); d.forEach(function(v,k){p.append(k,v);}); p.append('source',(document.title||'')+' '+location.pathname);
+    if(CONFIG.formEndpoint&&CONFIG.formMap){
+      var p=new URLSearchParams(); d.forEach(function(v,k){ if(CONFIG.formMap[k]) p.append(CONFIG.formMap[k],v); });
       if(b){b.disabled=true;b.textContent='접수 중…';}
       fetch(CONFIG.formEndpoint,{method:'POST',mode:'no-cors',body:p}).then(function(){
         f.reset(); if(b){b.disabled=false;b.textContent=ob;}
         if(n){n.textContent='신청이 접수되었습니다. 하루 안에 리포트를 보내드립니다.';n.style.color='var(--acc2)';}
       }).catch(function(){ if(b){b.disabled=false;b.textContent=ob;} if(n){n.textContent='전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';} });
     } else {
-      var body=['병원명: '+d.get('name'),'지역: '+d.get('area'),'진료과: '+d.get('dept'),'연락처: '+d.get('contact'),'','무료 AI 추천 진단을 신청합니다.'].join('\n');
+      var body=['병원명: '+d.get('name'),'담당자: '+d.get('manager'),'연락처: '+d.get('contact'),'','무료 AI 추천 진단을 신청합니다.'].join('\n');
       location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('[무료 AI 추천 진단] '+d.get('name'))+'&body='+encodeURIComponent(body);
       if(n) n.textContent='메일 앱이 열립니다. 전송하시면 하루 안에 리포트를 보내드립니다.';
     } });
