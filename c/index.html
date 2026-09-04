@@ -94,9 +94,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:2
 #orb{transition:opacity 1.3s ease}
 .sec,.os,footer,.chat,.chat .a,.chat .u,.road div,.pgrid div,.pc,.dform input,.nav{transition:background-color .6s ease,color .6s ease,border-color .6s ease,box-shadow .6s ease}
 body.light{background:#f4f3f7;color:#17171c}
-body.light #orb{opacity:0}
 body.light .sec{background:#f4f3f7;border-top-color:rgba(0,0,0,.06)}
-body.light #diag{background:#f4f3f7}
+body.light #diag{background:transparent}
 body.light footer{background:#f4f3f7;border-top-color:rgba(0,0,0,.06);color:#5a5a66}
 body.light h1,body.light h2{color:#17171c}
 body.light .lede{color:#4b4b57}
@@ -115,7 +114,6 @@ body.light .pc.std{border-color:rgba(255,90,60,.5)}
 body.light .pc.std::after{background:#fff}
 body.light .pc.std .nm{color:#c2410c}body.light .pc.std ul{color:#33333c}
 body.light #diag .hov{display:none}
-body.light #diag .wrap{grid-template-columns:1fr;max-width:660px;margin:0 auto}
 body.light .dform input{background:#fff;border-color:rgba(0,0,0,.16);color:#17171c}
 body.light .dform label{color:#5a5a66}
 body.light .nav{background:rgba(244,243,247,.8);border-bottom-color:rgba(0,0,0,.08)}
@@ -160,7 +158,7 @@ body.light .os .txt{text-shadow:none}
 body.light .pc:not(.std):hover{box-shadow:0 22px 50px rgba(20,20,40,.12)}
 .price:hover .pc.std:not(:hover){filter:saturate(.55) brightness(.92)}
 /* ===== light act: uniform bg, separation via white cards + spacing (no color-block seams) ===== */
-body.light #diag{background:#f4f3f7}
+body.light #diag{background:transparent}
 body.light .sec,body.light #diag{border-top-color:transparent}
 /* bottom channel marquee */
 .cmarquee{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
@@ -303,7 +301,7 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
 <script>
 (function(){
 SAG.init();
-ScrollTrigger.create({trigger:'#answer',start:'top 60%',onEnter:function(){document.body.classList.add('light');clearTimeout(st._pt);st._pt=setTimeout(function(){st.paused=true;},1600);},onLeaveBack:function(){document.body.classList.remove('light');clearTimeout(st._pt);st.paused=false;}});
+ScrollTrigger.create({trigger:'#answer',start:'top 82%',onEnter:function(){document.body.classList.add('light');if(st){orbEl.style.opacity='1';st.paused=false;apply(document.getElementById('answer'));clearTimeout(st._pt);st._pt=setTimeout(function(){st.paused=true;},1700);}},onLeaveBack:function(){document.body.classList.remove('light');if(st){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';}}});
 var st=SAG.orb(document.getElementById('orb'),{x:.34,y:-.02,r:.29,lit:6,maxDpr:1,maxPx:1280,fps:30});
 if(!st){ document.getElementById('orb').style.display='none'; return; }
 var mobile=matchMedia('(max-width:900px)').matches;
@@ -321,7 +319,7 @@ var secs=document.querySelectorAll('[data-orb]'); apply(secs[0],true);
 secs.forEach(function(sec){ ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',onEnter:function(){apply(sec);},onEnterBack:function(){apply(sec);}}); });
 /* 마지막 상담창: 반전 때 날아갔던 오브가 다시 날아 들어오도록 렌더 재개 + 캔버스 다시 보이기 */
 var orbEl=document.getElementById('orb'),diagSec=document.getElementById('diag');
-ScrollTrigger.create({trigger:'#diag',start:'top 75%',onEnter:function(){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';if(!mobile){gsap.set(st,{x:-1,y:-0.8,alpha:0});apply(diagSec);}},onLeaveBack:function(){clearTimeout(st._pt);st.paused=true;orbEl.style.opacity='';}});
+ScrollTrigger.create({trigger:'#diag',start:'top 75%',onEnter:function(){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';if(!mobile){gsap.set(st,{x:-1,y:-0.8,alpha:0});apply(diagSec);}},onLeaveBack:function(){clearTimeout(st._pt);st.paused=true;orbEl.style.opacity='0';}});
 /* diagnosis hover preview */
 var hov=document.getElementById('diag'); hov.addEventListener('pointerenter',function(){ gsap.to(st,{lit:6,duration:1.8,ease:'power2.out',overwrite:'auto'}); }); hov.addEventListener('pointerleave',function(){ gsap.to(st,{lit:0,duration:.9,overwrite:'auto'}); });
 SAG.type(document.getElementById('typeC'),'강북구에서는 OOO 병원이 갑상선 수술을 전문으로 하는 외과 병원으로 알려져 있습니다. OOO 원장은 갑상선 결절과 암 수술 경험이 많고, 환자 리뷰에서도 설명이 자세하다는 평가가 많습니다. 출처 · [1] 건강 전문지 기사 [2] OOO 병원 지식 문서 [3] Medical Insights Korea 칼럼 [4] 구글 리뷰',{trigger:'#answer'});

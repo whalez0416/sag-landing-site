@@ -78,12 +78,13 @@ var FS=[
 ' float rim=exp(-abs(d)*170.*.29/r); body+=body*rim*.6+vec3(.3,.4,.55)*rim*.15*(.3+.7*on);',
 ' vec3 bg=vec3(.043,.031,.063)+vec3(.05,.02,.06)*exp(-length(uv-off)*1.8);',
 ' float glow=exp(-max(d,0.)*7.5*.29/r)*(0.15+0.85*min(lit,6.)/6.); vec3 gc=mix(coral,violet,clamp(.5+ax*.5,0.,1.)); gc=mix(gc,teal,smoothstep(.2,.9,ax-ay*.5));',
-' vec3 c=mix(bg+gc*glow*.30,body,inside);',
-' if(rip>0.){for(int k=0;k<3;k++){float rr=r*(1.25+float(k)*.30)+rip*r*1.4; float ring=smoothstep(.007,0.,abs(hexd(q)-rr)); c+=vec3(1.,.5,.35)*ring*(.55-rip*.45)/(1.+float(k)*.7);}}',
-' c=mix(bg,c,alpha); c+=(hash(gl_FragCoord.xy+fract(t))-.5)*.03; gl_FragColor=vec4(c,1.);}'].join('\n');
+' vec3 col2=mix(gc*glow*0.9,body,inside);',
+' float cov=max(inside,clamp(glow,0.,1.)*0.45);',
+' if(rip>0.){for(int k=0;k<3;k++){float rr=r*(1.25+float(k)*.30)+rip*r*1.4; float ring=smoothstep(.007,0.,abs(hexd(q)-rr)); float rc=ring*(.55-rip*.45)/(1.+float(k)*.7); col2+=vec3(1.,.5,.35)*rc; cov=max(cov,rc);}}',
+' col2+=(hash(gl_FragCoord.xy+fract(t))-.5)*.03; cov=clamp(cov,0.,1.)*alpha; gl_FragColor=vec4(col2*cov,cov);}'].join('\n');
 function orb(cv,opts){ opts=opts||{}; var gl=cv.getContext('webgl',{antialias:false}); if(!gl) return null;
   function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o;}
-  var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}')); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr); gl.useProgram(pr);
+  var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}')); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr); gl.useProgram(pr); gl.enable(gl.BLEND); gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
   var buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW); var lp=gl.getAttribLocation(pr,'p'); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
   var U={}; ['res','t','mouse','lit','rip','off','rad','alpha'].forEach(function(k){U[k]=gl.getUniformLocation(pr,k);});
   var st={lit:opts.lit!=null?opts.lit:6,rip:0,x:opts.x||0,y:opts.y||0,r:opts.r||.29,alpha:1,mx:.5,my:.5,paused:false};
@@ -93,7 +94,7 @@ function orb(cv,opts){ opts=opts||{}; var gl=cv.getContext('webgl',{antialias:fa
   var t0=performance.now(), vis=true;
   if('IntersectionObserver' in window){ new IntersectionObserver(function(en){vis=en[0].isIntersecting;}).observe(cv); }
   var _last=0, _min=opts.fps?1000/opts.fps:0;
-  (function loop(now){ requestAnimationFrame(loop); if(!(vis&&!document.hidden)||st.paused) return; if(_min&&now&&now-_last<_min) return; _last=now||0; gl.uniform2f(U.res,cv.width,cv.height); gl.uniform1f(U.t,reduce?0:(performance.now()-t0)/1000); gl.uniform2f(U.mouse,st.mx,st.my); gl.uniform1f(U.lit,st.lit); gl.uniform1f(U.rip,st.rip); gl.uniform2f(U.off,st.x,st.y); gl.uniform1f(U.rad,st.r); gl.uniform1f(U.alpha,st.alpha); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); })();
+  (function loop(now){ requestAnimationFrame(loop); if(!(vis&&!document.hidden)||st.paused) return; if(_min&&now&&now-_last<_min) return; _last=now||0; gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT); gl.uniform2f(U.res,cv.width,cv.height); gl.uniform1f(U.t,reduce?0:(performance.now()-t0)/1000); gl.uniform2f(U.mouse,st.mx,st.my); gl.uniform1f(U.lit,st.lit); gl.uniform1f(U.rip,st.rip); gl.uniform2f(U.off,st.x,st.y); gl.uniform1f(U.rad,st.r); gl.uniform1f(U.alpha,st.alpha); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); })();
   return st;
 }
 return {S:S,W:W,STEPS:STEPS,phone:phone,winbox:winbox,split:split,init:init,type:type,orb:orb,reduce:reduce,CONFIG:CONFIG,lenis:function(){return lenis;}};
