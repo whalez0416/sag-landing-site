@@ -13,12 +13,14 @@
 <style>
 :root{--bg:#191f28;--bg2:#202834;--bg3:#141a22;--fg:#fff;--mute:#b0b8c1;--dim:#8b95a1;--acc:#ff5a3c;--acc2:#ff7a5c}
 body{background:var(--bg);color:var(--fg);overflow-x:hidden}
-.nav{position:fixed;top:0;left:0;right:0;height:60px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:14px;backdrop-filter:blur(14px);background:rgba(25,31,40,.6);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav .brand{font-weight:700;text-decoration:none}.nav .brand span{font-weight:400;color:var(--dim);margin-left:10px}
-.nav .links{display:flex;gap:26px}.nav .links a{text-decoration:none;color:var(--mute)}.nav .links a:hover{color:#fff}
+.nav{position:fixed;top:0;left:0;right:0;height:64px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,48px);font-size:14px;backdrop-filter:blur(16px);background:rgba(25,31,40,.62);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav .brand{display:inline-flex;align-items:baseline;gap:10px;text-decoration:none}
+.nav .brand b{font-weight:800;font-size:18px;letter-spacing:.02em;color:var(--fg)}
+.nav .brand span{font-weight:500;font-size:12px;color:var(--dim)}
+.nav .links{display:flex;gap:28px}.nav .links a{text-decoration:none;color:var(--mute);transition:color .2s}.nav .links a:hover{color:#fff}
 .btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:14px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;text-decoration:none;transition:transform .3s,box-shadow .3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(255,90,60,.35)}
-.nav .btn{height:40px;padding:0 18px;font-size:14px;border-radius:10px}
+.nav .btn{height:40px;padding:0 20px;font-size:14px;border-radius:999px}
 @media (max-width:900px){.nav{padding:0 20px}.nav .links{display:none}}
 h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.2;font-weight:700;letter-spacing:-.02em}
 .eyebrow{font-size:16px;font-weight:700;color:var(--acc2);letter-spacing:.02em;margin-bottom:18px}
@@ -95,8 +97,22 @@ h2{margin:0;font-size:clamp(34px,4vw,56px);line-height:1.2;font-weight:700;lette
 .dform{margin:40px auto 0;text-align:left}
 .dform input{background:rgba(255,255,255,.06)}
 .dform button{border-radius:14px}
-footer{padding:40px 0 48px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer{padding:72px 0 40px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:var(--dim)}
+.fcols{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+@media (max-width:760px){.fcols{grid-template-columns:1fr;gap:32px}}
+.flogo{font-size:24px;font-weight:800;letter-spacing:-.01em;color:var(--fg)}
+.ftag{margin:14px 0 8px;font-size:15px;font-weight:600;color:var(--mute)}
+.fco{margin:0;font-size:13px;line-height:1.7;color:var(--dim);max-width:34ch}
+.fcol h4{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.03em;color:var(--fg)}
+.fcol a{display:block;font-size:14px;color:var(--mute);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.fcol a:hover{color:var(--fg)}
+.fpat{font-size:12px;color:var(--dim)}
+.fbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07);font-size:12px;color:var(--dim)}
+body.light .flogo,body.light .fcol h4{color:#17171c}
+body.light .ftag{color:#33333c}
+body.light .fcol a{color:#5a5a66}body.light .fcol a:hover{color:#111}
+body.light .fco,body.light .fpat,body.light .fbar{color:#6a6a76}
+body.light .fbar{border-top-color:rgba(0,0,0,.1)}
 /* two-act theme: 다크(히어로·여정·챕터) -> #flip부터 라이트 유지 */
 body{transition:background-color .7s ease,color .7s ease}
 .nav{transition:background-color .5s ease,color .5s ease}
@@ -106,7 +122,7 @@ body{transition:background-color .7s ease,color .7s ease}
 #flip{background:var(--bg3)}
 body.light{background:#f4f3f7;color:#17171c}
 body.light .nav{background:rgba(244,243,247,.82);border-bottom-color:rgba(0,0,0,.08)}
-body.light .nav .brand,body.light .nav .links a{color:#17171c}
+body.light .nav .brand,body.light .nav .brand b,body.light .nav .links a{color:#17171c}
 body.light .nav .brand span{color:#8a8a98}
 body.light .nav .links a:hover{color:#000}
 body.light #flip{background:transparent}
@@ -148,7 +164,7 @@ body.light .flip,body.light .sec,body.light .diag{padding-top:120px!important;bo
 </style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="#top">S.A.G<span>NC 컨설팅</span></a><div class="links"><a href="#journey">환자의 여정</a><a href="#six">여섯 조건</a><a href="#flip">사례</a><a href="#about">회사</a><a href="#price">비용</a></div><a class="btn" href="#diag">무료 AI 추천 진단</a></nav>
+<nav class="nav"><a class="brand" href="#top"><b>S.A.G</b><span>NC 컨설팅</span></a><div class="links"><a href="#journey">환자의 여정</a><a href="#six">여섯 조건</a><a href="#flip">사례</a><a href="#about">회사</a><a href="#price">비용</a></div><a class="btn" href="#diag">무료 AI 추천 진단</a></nav>
 
 <section class="hero" id="top">
   <div class="floor"></div>
@@ -259,7 +275,24 @@ body.light .flip,body.light .sec,body.light .diag{padding-top:120px!important;bo
   </form>
 </div></section>
 
-<footer><div class="wrap"><div><b>S.A.G</b> <span style="margin-left:10px">앤씨컨설팅 · 잘되는 브랜드 더 잘되게</span></div><a href="https://ncconsulting.co.kr" style="text-decoration:none">ncconsulting.co.kr</a><div>© 2026 NC Consulting</div></div></footer>
+<footer><div class="wrap">
+  <div class="fcols">
+    <div class="fbrand">
+      <div class="flogo">S.A.G</div>
+      <p class="ftag">환자가 찾는 모든 곳에, 우리 병원을.</p>
+      <p class="fco">앤씨컨설팅㈜ · 잘되는 브랜드 더 잘되게, 안되는 브랜드 잘되게</p>
+    </div>
+    <div class="fcol"><h4>둘러보기</h4>
+      <a href="#journey">환자의 여정</a><a href="#six">여섯 조건</a><a href="#flip">사례</a><a href="#about">회사</a><a href="#price">비용</a>
+    </div>
+    <div class="fcol"><h4>문의</h4>
+      <a href="#diag">무료 AI 추천 진단</a>
+      <a href="https://ncconsulting.co.kr" target="_blank" rel="noopener">ncconsulting.co.kr</a>
+      <span class="fpat">특허 제10-2022-0055879</span>
+    </div>
+  </div>
+  <div class="fbar"><span>© 2026 NC Consulting · 앤씨컨설팅㈜</span><span>SEO · AEO · GEO Optimization</span></div>
+</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
