@@ -1,7 +1,7 @@
 /* SAG shared runtime: screens, phone/window mocks, scroll + reveal, countup, typewriter, orb shader, form */
 window.SAG=(function(){
 'use strict';
-var CONFIG={email:'contact@ncconsulting.co.kr',phone:'',formEndpoint:''}; /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
+var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',formEndpoint:''}; /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var S={};
 S.search='<div class="sb">9:41<i></i></div><div class="sc"><div class="srch">강북구 갑상선 수술 잘하는 곳</div><div class="tabs"><b>통합</b><span>지도</span><span>블로그</span><span>뉴스</span></div><div class="res hi"><div class="t"><span class="pill1">1위</span>&nbsp; OOO 병원</div><div class="u">갑상선 전문 외과 · 강북구</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">△△ 내과</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">□□ 병원</div><div class="ln m"></div><div class="ln s"></div></div></div>';
