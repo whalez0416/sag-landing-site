@@ -230,7 +230,7 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
   <div class="cmarquee" data-reveal><div class="cmtrack"><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span><span>검색 결과</span><span>AI 요약</span><span>AI 답변</span><span>지도</span><span>영상</span><span>리뷰</span></div></div>
 </div></section>
 
-<section class="sec" id="answer" data-orb="0,1.2,0.22,6,0"><div class="wrap">
+<section class="sec" id="answer" data-orb="1,0.8,0.22,6,0"><div class="wrap">
   <h2 data-split>S.A.G 솔루션 도입 6개월 뒤,<br>AI의 답이 이렇게 달라집니다</h2>
   <p class="lede" data-reveal style="margin:-24px 0 40px;max-width:none">검색 결과, AI 요약, AI 답변, 리뷰까지 — 환자가 보는 여러 화면에서 답이 함께 달라집니다.</p>
   <div class="chats" data-stagger>
@@ -320,8 +320,8 @@ function apply(sec,immediate){ var v=sec.dataset.orb.split(',').map(Number); var
 var secs=document.querySelectorAll('[data-orb]'); apply(secs[0],true);
 secs.forEach(function(sec){ ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',onEnter:function(){apply(sec);},onEnterBack:function(){apply(sec);}}); });
 /* 마지막 상담창: 반전 때 날아갔던 오브가 다시 날아 들어오도록 렌더 재개 + 캔버스 다시 보이기 */
-var orbEl=document.getElementById('orb');
-ScrollTrigger.create({trigger:'#diag',start:'top 75%',onEnter:function(){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';},onLeaveBack:function(){clearTimeout(st._pt);st.paused=true;orbEl.style.opacity='';}});
+var orbEl=document.getElementById('orb'),diagSec=document.getElementById('diag');
+ScrollTrigger.create({trigger:'#diag',start:'top 75%',onEnter:function(){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';if(!mobile){gsap.set(st,{x:-1,y:-0.8,alpha:0});apply(diagSec);}},onLeaveBack:function(){clearTimeout(st._pt);st.paused=true;orbEl.style.opacity='';}});
 /* diagnosis hover preview */
 var hov=document.getElementById('diag'); hov.addEventListener('pointerenter',function(){ gsap.to(st,{lit:6,duration:1.8,ease:'power2.out',overwrite:'auto'}); }); hov.addEventListener('pointerleave',function(){ gsap.to(st,{lit:0,duration:.9,overwrite:'auto'}); });
 SAG.type(document.getElementById('typeC'),'강북구에서는 OOO 병원이 갑상선 수술을 전문으로 하는 외과 병원으로 알려져 있습니다. OOO 원장은 갑상선 결절과 암 수술 경험이 많고, 환자 리뷰에서도 설명이 자세하다는 평가가 많습니다. 출처 · [1] 건강 전문지 기사 [2] OOO 병원 지식 문서 [3] Medical Insights Korea 칼럼 [4] 구글 리뷰',{trigger:'#answer'});
