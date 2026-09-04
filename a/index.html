@@ -170,7 +170,17 @@ body.light .road .dot{box-shadow:0 0 0 7px #f4f3f7}
 .prow .pd{font-size:15px;color:var(--mute)}
 @media (max-width:760px){.prow{grid-template-columns:1fr;gap:8px}}
 
-body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1px solid rgba(0,0,0,.1)}
+body.light .sec,body.light .diag,body.light footer{border-top:1px solid rgba(0,0,0,.1)}
+/* #diag: 다크 육각 패널로 위 라이트 섹션과 구분 */
+#diag{position:relative;border-top:none;background:#08080c;overflow:hidden}
+#diag::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,12,.72),rgba(8,8,12,.9)),url(diag-bg.jpg) center/cover no-repeat;z-index:0}
+#diag>.wrap{position:relative;z-index:1}
+body.light #diag h2{color:#fff}
+body.light #diag .lede{color:#c9c9d6}
+body.light #diag .dform label{color:#b8b8c6}
+body.light #diag .dform input{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff}
+body.light #diag .dform input::placeholder{color:rgba(255,255,255,.42)}
+body.light #diag .note{color:#c9c9d6}
 body.light .tbl div{border-top-color:rgba(0,0,0,.12)}
 </style>
 </head>
