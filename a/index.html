@@ -90,6 +90,15 @@ h2{margin:0;font-size:clamp(40px,4.2vw,60px);line-height:1.15;font-weight:300;le
 .tbl{display:flex;flex-direction:column;font-size:15px}
 .tbl div{display:flex;justify-content:space-between;padding:18px 0;border-top:1px solid rgba(255,255,255,.14)}
 .tbl div span:first-child{color:var(--mute)}.tbl .old{color:var(--dim);margin-right:16px}
+.crit{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.crit{grid-template-columns:1fr}}
+.cbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px}
+.cbox .cm{font-size:17px;color:var(--mute);font-weight:600;margin-bottom:18px}
+.cbox .cv{font-size:clamp(48px,5.5vw,66px);font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--acc2)}
+.cbox .cv span{font-size:20px;font-weight:600;color:var(--fg);margin-left:8px;letter-spacing:0}
+.cbox .cavg{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:17px;color:var(--mute)}
+.cbox .cavg b{color:var(--fg);font-weight:700}
+body.light .cbox{box-shadow:0 14px 40px rgba(20,20,40,.07)}
 /* 달라진 답 */
 .chats{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media (max-width:900px){.chats{grid-template-columns:1fr}}
@@ -228,17 +237,13 @@ body.light .tbl div{border-top-color:rgba(0,0,0,.12)}
   </div>
 </div></section>
 
-<section class="sec" id="case"><div class="wrap two" style="align-items:center">
-  <div>
-    <h2 data-split>AI에게 선택되려면,<br>넘어야 할 기준이 있습니다</h2>
-    <p class="lede" data-reveal style="margin-top:24px">AI와 검색엔진은 병원을 점수로 비교합니다. 통과 기준은 최적화 점수 90점 이상, 로딩 2.5초 이내, 화면 밀림(CLS) 0.1 이하입니다.</p>
-    <p class="lede" data-reveal style="margin-top:20px"><b style="color:var(--fg);font-weight:800">그런데 대부분의 병원 홈페이지는 이 기준에 한참 못 미칩니다.</b> 무거운 사진과 스크립트로 점수가 바닥이고, AI가 읽어가기도 전에 순위에서 밀려납니다.</p>
-  </div>
-  <div class="tbl" data-stagger>
-    <div><span>최적화(성능) 점수</span><span><b style="color:var(--acc2)">기준 90+</b> · 대부분 40~60점대</span></div>
-    <div><span>화면 로딩</span><span><b style="color:var(--acc2)">기준 2.5초</b> · 대부분 5초 이상</span></div>
-    <div><span>화면 밀림(CLS)</span><span><b style="color:var(--acc2)">기준 0.1</b> · 대부분 0.25 이상</span></div>
-    <div style="padding:0"></div>
+<section class="sec" id="case"><div class="wrap">
+  <div class="head" style="margin-bottom:48px"><h2 data-split>AI에게 선택되려면,<br>넘어야 할 기준이 있습니다</h2>
+  <p class="lede" data-reveal style="max-width:48ch">AI와 검색엔진은 병원을 점수로 비교합니다. <b style="color:var(--fg);font-weight:800">그런데 대부분의 병원 홈페이지는 이 기준에 한참 못 미칩니다.</b> 무거운 사진과 스크립트로 점수가 바닥이고, AI가 읽어가기도 전에 밀려납니다.</p></div>
+  <div class="crit" data-stagger>
+    <div class="cbox"><div class="cm">최적화 점수</div><div class="cv">90<span>점 이상</span></div><div class="cavg">대부분의 병원 <b>40~60점</b></div></div>
+    <div class="cbox"><div class="cm">화면 로딩 속도</div><div class="cv">2.5<span>초 이내</span></div><div class="cavg">대부분의 병원 <b>5초 이상</b></div></div>
+    <div class="cbox"><div class="cm">화면 밀림 · CLS</div><div class="cv">0.1<span>이하</span></div><div class="cavg">대부분의 병원 <b>0.25 이상</b></div></div>
   </div>
 </div></section>
 
