@@ -101,6 +101,7 @@ a{color:inherit}
 .dform button{grid-column:1/-1;height:58px;border:0;border-radius:12px;background:#ff5a3c;color:#fff;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
 .dform button:hover{background:#ff7052}
 .dform .note{grid-column:1/-1;font-size:14px;opacity:.9;font-weight:500}
+.dform .planbadge{grid-column:1/-1;font-size:14px;font-weight:700;color:#ff8a5b;letter-spacing:.01em}
 @media (max-width:640px){.dform{grid-template-columns:1fr}}
 
 

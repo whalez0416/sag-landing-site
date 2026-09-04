@@ -53,10 +53,22 @@ function form(){ var f=document.getElementById('dform'); if(!f) return;
         if(n){n.textContent='신청이 접수되었습니다. 하루 안에 리포트를 보내드립니다.';n.style.color='var(--acc2)';}
       }).catch(function(){ if(b){b.disabled=false;b.textContent=ob;} if(n){n.textContent='전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';} });
     } else {
-      var body=['병원명: '+d.get('name'),'담당자: '+d.get('manager'),'연락처: '+d.get('contact'),'','무료 AI 추천 진단을 신청합니다.'].join('\n');
+      var body=['병원명: '+d.get('name'),'담당자: '+d.get('manager'),'연락처: '+d.get('contact'),'관심 요금제: '+(d.get('plan')||'-'),'','무료 AI 추천 진단을 신청합니다.'].join('\n');
       location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('[무료 AI 추천 진단] '+d.get('name'))+'&body='+encodeURIComponent(body);
       if(n) n.textContent='메일 앱이 열립니다. 전송하시면 하루 안에 리포트를 보내드립니다.';
     } });
+  /* 요금제 '이 가격으로 상담하기' 클릭 → 관심 요금제 자동 담기 (A·C=.pcbtn, B=.pc-cta) */
+  var hid=f.querySelector('input[name="plan"]');
+  if(!hid){ hid=document.createElement('input'); hid.type='hidden'; hid.name='plan'; hid.value=''; f.appendChild(hid); }
+  var badge=null;
+  document.querySelectorAll('.pcbtn,.pc-cta').forEach(function(a){
+    a.addEventListener('click',function(){
+      var pc=a.closest('.pc'), nm=pc&&pc.querySelector('.nm');
+      hid.value=nm?nm.textContent.split('·')[0].trim():'';
+      if(!badge){ badge=document.createElement('div'); badge.className='planbadge'; f.insertBefore(badge,f.firstChild); }
+      badge.textContent='관심 요금제 · '+hid.value;
+    });
+  });
 }
 function floatBtns(){ if(document.querySelector('.fbtns')) return;
   var diag=document.getElementById('diag');
