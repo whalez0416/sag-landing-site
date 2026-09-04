@@ -278,7 +278,7 @@ body.light .sec,body.light .diag,body.light #diag,body.light footer{border-top:1
   </div>
 </div></section>
 
-<section class="os l diag" id="diag" data-orb="-0.36,0,0.24,0,1" data-hover="1"><div class="wrap"><div class="hov" id="hov"></div><div class="txt">
+<section class="os l diag" id="diag" data-orb="-0.36,0,0.26,6,1" data-hover="1"><div class="wrap"><div class="hov" id="hov"></div><div class="txt">
   <div class="eyebrow" data-reveal>진단</div>
   <h2 data-split>우리 병원의 오브는<br>몇 면이 켜져 있습니까</h2>
   <p class="lede" data-reveal>병원명과 지역, 진료과만 알려주시면 챗GPT, 제미나이, 구글 AI 요약에 실제로 물어본 결과와 여섯 면의 상태를 한 장 리포트로 보내드립니다.</p>
@@ -321,7 +321,7 @@ secs.forEach(function(sec){ ScrollTrigger.create({trigger:sec,start:'top 55%',en
 var orbEl=document.getElementById('orb'),diagSec=document.getElementById('diag');
 ScrollTrigger.create({trigger:'#diag',start:'top 75%',onEnter:function(){clearTimeout(st._pt);st.paused=false;orbEl.style.opacity='1';if(!mobile){gsap.set(st,{x:-1,y:-0.8,alpha:0});apply(diagSec);}},onLeaveBack:function(){clearTimeout(st._pt);st.paused=true;orbEl.style.opacity='0';}});
 /* diagnosis hover preview */
-var hov=document.getElementById('diag'); hov.addEventListener('pointerenter',function(){ gsap.to(st,{lit:6,duration:1.8,ease:'power2.out',overwrite:'auto'}); }); hov.addEventListener('pointerleave',function(){ gsap.to(st,{lit:0,duration:.9,overwrite:'auto'}); });
+var hov=document.getElementById('diag'); hov.addEventListener('pointerenter',function(){ gsap.to(st,{lit:6,duration:.6,overwrite:'auto'}); gsap.killTweensOf(st,'rip'); gsap.fromTo(st,{rip:0.001},{rip:1,duration:2.2,ease:'power1.out',repeat:-1,repeatDelay:.5}); }); hov.addEventListener('pointerleave',function(){ gsap.killTweensOf(st,'rip'); gsap.to(st,{rip:0,duration:.6,overwrite:'auto'}); });
 SAG.type(document.getElementById('typeC'),'강북구에서는 OOO 병원이 갑상선 수술을 전문으로 하는 외과 병원으로 알려져 있습니다. OOO 원장은 갑상선 결절과 암 수술 경험이 많고, 환자 리뷰에서도 설명이 자세하다는 평가가 많습니다. 출처 · [1] 건강 전문지 기사 [2] OOO 병원 지식 문서 [3] Medical Insights Korea 칼럼 [4] 구글 리뷰',{trigger:'#answer'});
 })();
 </script>
