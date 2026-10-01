@@ -1,7 +1,10 @@
 /* SAG shared runtime: screens, phone/window mocks, scroll + reveal, countup, typewriter, orb shader, form */
 window.SAG=(function(){
 'use strict';
-var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',formEndpoint:'',formMap:null};
+var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',
+  /* 구글폼 'SAG 무료진단 신청' → 시트 'SAG 무료진단 신청(응답)' (2026-10-01) */
+  formEndpoint:'https://docs.google.com/forms/d/e/1FAIpQLSdkMbU-QmvvE8IvYiOCdAcnZteir8IljILlgoBG7A-_yyVBFQ/formResponse',
+  formMap:{name:'entry.34421808',manager:'entry.803207644',contact:'entry.145193992',plan:'entry.48056997'}};
 /* formEndpoint=구글폼 formResponse URL, formMap={폼필드명:'entry.숫자'} 설정 시 신청이 구글폼→시트에 저장됨. 미설정 시 mailto 폴백 */ /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var S={};
