@@ -6,6 +6,9 @@ var CONFIG={email:'domybesthj@ncconsulting.co.kr',phone:'',
   formEndpoint:'https://docs.google.com/forms/d/e/1FAIpQLSdkMbU-QmvvE8IvYiOCdAcnZteir8IljILlgoBG7A-_yyVBFQ/formResponse',
   formMap:{name:'entry.34421808',manager:'entry.803207644',contact:'entry.145193992',plan:'entry.48056997'}};
 /* formEndpoint=구글폼 formResponse URL, formMap={폼필드명:'entry.숫자'} 설정 시 신청이 구글폼→시트에 저장됨. 미설정 시 mailto 폴백 */ /* email=폴백 메일주소, formEndpoint=Google Apps Script 웹앱 /exec URL(설정 시 신청이 시트에 저장됨) */
+/* 메타 픽셀 'SAG 랜딩'(앤씨_SAG2 연결) — 방문=PageView, 신청 저장=Lead. 표준 기본 코드 그대로. */
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2156012775010208'); fbq('track','PageView');
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var S={};
 S.search='<div class="sb">9:41<i></i></div><div class="sc"><div class="srch">강북구 갑상선 수술 잘하는 곳</div><div class="tabs"><b>통합</b><span>지도</span><span>블로그</span><span>뉴스</span></div><div class="res hi"><div class="t"><span class="pill1">1위</span>&nbsp; OOO 병원</div><div class="u">갑상선 전문 외과 · 강북구</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">△△ 내과</div><div class="ln m"></div><div class="ln s"></div></div><div class="res"><div class="t">□□ 병원</div><div class="ln m"></div><div class="ln s"></div></div></div>';
@@ -52,6 +55,7 @@ function form(){ var f=document.getElementById('dform'); if(!f) return;
       var p=new URLSearchParams(); d.forEach(function(v,k){ if(CONFIG.formMap[k]) p.append(CONFIG.formMap[k],v); });
       if(b){b.disabled=true;b.textContent='접수 중…';}
       fetch(CONFIG.formEndpoint,{method:'POST',mode:'no-cors',body:p}).then(function(){
+        fbq('track','Lead',{content_name:'SAG 무료진단'});
         f.reset(); if(b){b.disabled=false;b.textContent=ob;}
         if(n){n.textContent='신청이 접수되었습니다. 하루 안에 리포트를 보내드립니다.';n.style.color='var(--acc2)';}
       }).catch(function(){ if(b){b.disabled=false;b.textContent=ob;} if(n){n.textContent='전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';} });
