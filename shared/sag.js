@@ -64,6 +64,12 @@ function form(){ var f=document.getElementById('dform'); if(!f) return;
       location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('[무료 AI 추천 진단] '+d.get('name'))+'&body='+encodeURIComponent(body);
       if(n) n.textContent='메일 앱이 열립니다. 전송하시면 하루 안에 리포트를 보내드립니다.';
     } });
+  /* 이탈 지점 기록(메타 픽셀): 신청 버튼류 클릭 → 폼이 화면에 보임 → 입력 시작 → (Lead) */
+  document.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('a[href="#diag"],.pcbtn,.pc-cta');
+    if(a) fbq('trackCustom','CTAClick',{label:a.textContent.trim().slice(0,20)}); },true);
+  if('IntersectionObserver' in window){ var seen=false; new IntersectionObserver(function(en){
+    if(!seen&&en[0].isIntersecting){ seen=true; fbq('track','ViewContent',{content_name:'진단 폼'}); } },{threshold:.3}).observe(f); }
+  f.addEventListener('focusin',function once(){ fbq('trackCustom','FormStart'); f.removeEventListener('focusin',once); });
   /* 요금제 '이 가격으로 상담하기' 클릭 → 관심 요금제 자동 담기 (A·C=.pcbtn, B=.pc-cta) */
   var hid=f.querySelector('input[name="plan"]');
   if(!hid){ hid=document.createElement('input'); hid.type='hidden'; hid.name='plan'; hid.value=''; f.appendChild(hid); }
@@ -84,7 +90,9 @@ function floatBtns(){ if(document.querySelector('.fbtns')) return;
   document.body.appendChild(wrap);
   wrap.querySelector('.fb-cta').addEventListener('click',function(e){ if(diag){ e.preventDefault(); if(lenis) lenis.scrollTo(diag,{offset:-40}); else diag.scrollIntoView({behavior:'smooth'}); } });
   wrap.querySelector('.fb-top').addEventListener('click',function(){ if(lenis) lenis.scrollTo(0); else scrollTo({top:0,behavior:'smooth'}); });
-  function upd(){ wrap.classList.toggle('show',(pageYOffset||document.documentElement.scrollTop)>700); } upd(); addEventListener('scroll',upd,{passive:true});
+  var diagIn=false;   /* 진단 폼이 보이면 떠 있는 버튼을 숨긴다 — 모바일에서 연락처 칸·신청 버튼을 가리던 문제 */
+  if(diag&&'IntersectionObserver' in window) new IntersectionObserver(function(en){ diagIn=en[0].isIntersecting; upd(); }).observe(diag);
+  function upd(){ wrap.classList.toggle('show',!diagIn&&(pageYOffset||document.documentElement.scrollTop)>700); } upd(); addEventListener('scroll',upd,{passive:true});
 }
 /* ---------- orb ---------- */
 var FS=[
